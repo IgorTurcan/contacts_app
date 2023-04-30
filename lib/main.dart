@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'pages/contacts_page/contacts_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -15,22 +17,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const ContactsPage(),
-    );
-  }
-}
-
-class ContactsPage extends StatelessWidget {
-  const ContactsPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Contacts page'),
-      ),
-      body: const Center(
-        child: Text('Contacts page here'),
-      ),
     );
   }
 }
