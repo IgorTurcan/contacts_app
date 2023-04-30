@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:contacts_app/data_sources/json_loader.dart';
 
@@ -19,15 +20,16 @@ class ObjectBox {
     }
   }
 
+  void _putDemoContacts() async {
+    var res = await JSONLoader.instance.getInitialContacts();
+    _contactBox.putMany(res);
+  }
+
   static Future<ObjectBox> create() async {
     final store = await openStore();
     return ObjectBox._create(store);
   }
 
-  void _putDemoContacts() async {
-    var res = await JSONLoader.instance.getInitialContacts();
-    _contactBox.putMany(res);
-  }
 
   List<Contact> getAllContacts() {
     return _contactBox.getAll();
@@ -40,7 +42,7 @@ class ObjectBox {
     }
   }
 
-  void addContact({
+  void addNewContact({
     required String firstName,
     String? lastName,
     String? streetAddress1,
@@ -66,7 +68,15 @@ class ObjectBox {
     _contactBox.put(newContact);
   }
 
+  void addContacts(){
+
+  }
+
   void deleteContact(Contact contact) {
     _contactBox.remove(contact.contactID);
+  }
+
+  void close() {
+    _store.close();
   }
 }
