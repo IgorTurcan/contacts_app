@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'data_sources/json_loader.dart';
 import 'pages/contacts_page/contacts_page.dart';
 
-void main() {
-
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  JSONLoader.instance.getInitialContacts().then((res) {
-    print(res);
-  });
   runApp(const MyApp());
 }
 

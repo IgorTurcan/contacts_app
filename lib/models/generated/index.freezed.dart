@@ -21,7 +21,7 @@ Contact _$ContactFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Contact {
   @Id(assignable: true)
-  String get contactID => throw _privateConstructorUsedError;
+  int get contactID => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
   String? get streetAddress1 => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $ContactCopyWith<$Res> {
       _$ContactCopyWithImpl<$Res, Contact>;
   @useResult
   $Res call(
-      {@Id(assignable: true) String contactID,
+      {@Id(assignable: true) int contactID,
       String firstName,
       String? lastName,
       String? streetAddress1,
@@ -77,7 +77,7 @@ class _$ContactCopyWithImpl<$Res, $Val extends Contact>
       contactID: null == contactID
           ? _value.contactID
           : contactID // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ abstract class _$$_ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@Id(assignable: true) String contactID,
+      {@Id(assignable: true) int contactID,
       String firstName,
       String? lastName,
       String? streetAddress1,
@@ -151,7 +151,7 @@ class __$$_ContactCopyWithImpl<$Res>
       contactID: null == contactID
           ? _value.contactID
           : contactID // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -203,7 +203,7 @@ class _$_Contact implements _Contact {
 
   @override
   @Id(assignable: true)
-  final String contactID;
+  final int contactID;
   @override
   final String firstName;
   @override
@@ -265,7 +265,7 @@ class _$_Contact implements _Contact {
 
 abstract class _Contact implements Contact {
   factory _Contact(
-      {@Id(assignable: true) required final String contactID,
+      {@Id(assignable: true) required final int contactID,
       required final String firstName,
       final String? lastName,
       final String? streetAddress1,
@@ -278,7 +278,7 @@ abstract class _Contact implements Contact {
 
   @override
   @Id(assignable: true)
-  String get contactID;
+  int get contactID;
   @override
   String get firstName;
   @override

@@ -4,7 +4,7 @@ part of contact_library;
 class Contact with _$Contact {
   @Entity(realClass: Contact)
   factory Contact({
-    @Id(assignable: true) required String contactID,
+    @Id(assignable: true) required int contactID,
     required String firstName,
     String? lastName,
     String? streetAddress1,

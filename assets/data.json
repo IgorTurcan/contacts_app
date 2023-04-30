@@ -1,6 +1,6 @@
 [
   {
-    "contactID": "1",
+    "contactID": 1,
     "firstName": "John",
     "lastName": "Doe",
     "streetAddress1": "123 Main St",
@@ -10,7 +10,7 @@
     "zipCode": "12345"
   },
   {
-    "contactID": "2",
+    "contactID": 2,
     "firstName": "Jane",
     "lastName": "Doe",
     "streetAddress1": "456 Oak Ave",
@@ -20,7 +20,7 @@
     "zipCode": "54321"
   },
   {
-    "contactID": "3",
+    "contactID": 3,
     "firstName": "Bob",
     "lastName": "Smith",
     "streetAddress1": "789 Elm St",
@@ -30,7 +30,7 @@
     "zipCode": "67890"
   },
   {
-    "contactID": "4",
+    "contactID": 4,
     "firstName": "Alice",
     "lastName": "Johnson",
     "streetAddress1": "987 Pine St",
@@ -40,7 +40,7 @@
     "zipCode": "09876"
   },
   {
-    "contactID": "5",
+    "contactID": 5,
     "firstName": "David",
     "lastName": "Williams",
     "streetAddress1": "654 Maple Ave",
@@ -50,7 +50,7 @@
     "zipCode": "45678"
   },
   {
-    "contactID": "6",
+    "contactID": 6,
     "firstName": "Mary",
     "lastName": "Brown",
     "streetAddress1": "321 Cedar St",
@@ -60,7 +60,7 @@
     "zipCode": "23456"
   },
   {
-    "contactID": "7",
+    "contactID": 7,
     "firstName": "Tom",
     "lastName": "Lee",
     "streetAddress1": "555 Oak St",
@@ -70,7 +70,7 @@
     "zipCode": "78901"
   },
   {
-    "contactID": "8",
+    "contactID": 8,
     "firstName": "Sara",
     "lastName": "Garcia",
     "streetAddress1": "888 Pine St",
@@ -80,7 +80,7 @@
     "zipCode": "23456"
   },
   {
-    "contactID": "9",
+    "contactID": 9,
     "firstName": "Mark",
     "lastName": "Smith",
     "streetAddress1": "222 Maple Ave",
@@ -90,7 +90,7 @@
     "zipCode": "78901"
   },
   {
-    "contactID": "10",
+    "contactID": 10,
     "firstName": "Emily",
     "lastName": "Chen",
     "streetAddress1": "333 Cedar St",

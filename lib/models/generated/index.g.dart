@@ -7,7 +7,7 @@ part of contact_library;
 // **************************************************************************
 
 _$_Contact _$$_ContactFromJson(Map<String, dynamic> json) => _$_Contact(
-      contactID: json['contactID'] as String,
+      contactID: json['contactID'] as int,
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String?,
       streetAddress1: json['streetAddress1'] as String?,
