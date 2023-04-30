@@ -1,1 +1,1 @@
-Hours spent: 0h 40min
+Hours spent: 1.75h 0min

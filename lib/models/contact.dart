@@ -1,25 +1,18 @@
-import 'package:objectbox/objectbox.dart';
+part of contact_library;
 
-@Entity()
-class Contact {
-  @Id()
-  String contactID;
-  String? firstName;
-  String? lastName;
-  String? streetAddress1;
-  String? streetAddress2;
-  String? city;
-  String? state;
-  String? zipCode;
+@freezed
+class Contact with _$Contact {
+  @Entity(realClass: Contact)
+  factory Contact({
+    @Id(assignable: true) required String contactID,
+    required String firstName,
+    String? lastName,
+    String? streetAddress1,
+    String? streetAddress2,
+    String? city,
+    String? state,
+    String? zipCode,
+  }) = _Contact;
 
-  Contact({
-    required this.contactID,
-    this.firstName,
-    this.lastName,
-    this.streetAddress1,
-    this.streetAddress2,
-    this.city,
-    this.state,
-    this.zipCode,
-  }) : assert(firstName != null || lastName != null, 'Contact must have at least on name!');
+  factory Contact.fromJson(Map<String, dynamic> json) => _$ContactFromJson(json);
 }
