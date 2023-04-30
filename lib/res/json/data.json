@@ -1,12 +1,102 @@
 [
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {}
+  {
+    "contactID": "1",
+    "firstName": "John",
+    "lastName": "Doe",
+    "streetAddress1": "123 Main St",
+    "streetAddress2": "",
+    "city": "Anytown",
+    "state": "CA",
+    "zipCode": "12345"
+  },
+  {
+    "contactID": "2",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "streetAddress1": "456 Oak Ave",
+    "streetAddress2": "",
+    "city": "Othertown",
+    "state": "CA",
+    "zipCode": "54321"
+  },
+  {
+    "contactID": "3",
+    "firstName": "Bob",
+    "lastName": "Smith",
+    "streetAddress1": "789 Elm St",
+    "streetAddress2": "",
+    "city": "Sometown",
+    "state": "CA",
+    "zipCode": "67890"
+  },
+  {
+    "contactID": "4",
+    "firstName": "Alice",
+    "lastName": "Johnson",
+    "streetAddress1": "987 Pine St",
+    "streetAddress2": "",
+    "city": "Anothertown",
+    "state": "CA",
+    "zipCode": "09876"
+  },
+  {
+    "contactID": "5",
+    "firstName": "David",
+    "lastName": "Williams",
+    "streetAddress1": "654 Maple Ave",
+    "streetAddress2": "",
+    "city": "Yetanothertown",
+    "state": "CA",
+    "zipCode": "45678"
+  },
+  {
+    "contactID": "6",
+    "firstName": "Mary",
+    "lastName": "Brown",
+    "streetAddress1": "321 Cedar St",
+    "streetAddress2": "",
+    "city": "Lasttown",
+    "state": "CA",
+    "zipCode": "23456"
+  },
+  {
+    "contactID": "7",
+    "firstName": "Tom",
+    "lastName": "Lee",
+    "streetAddress1": "555 Oak St",
+    "streetAddress2": "",
+    "city": "Firsttown",
+    "state": "CA",
+    "zipCode": "78901"
+  },
+  {
+    "contactID": "8",
+    "firstName": "Sara",
+    "lastName": "Garcia",
+    "streetAddress1": "888 Pine St",
+    "streetAddress2": "",
+    "city": "Secondtown",
+    "state": "CA",
+    "zipCode": "23456"
+  },
+  {
+    "contactID": "9",
+    "firstName": "Mark",
+    "lastName": "Smith",
+    "streetAddress1": "222 Maple Ave",
+    "streetAddress2": "",
+    "city": "Thirdtown",
+    "state": "CA",
+    "zipCode": "78901"
+  },
+  {
+    "contactID": "10",
+    "firstName": "Emily",
+    "lastName": "Chen",
+    "streetAddress1": "333 Cedar St",
+    "streetAddress2": "",
+    "city": "Fourthtown",
+    "state": "CA",
+    "zipCode": "34567"
+  }
 ]
