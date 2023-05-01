@@ -14,12 +14,8 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Contact _$ContactFromJson(Map<String, dynamic> json) {
-  return _Contact.fromJson(json);
-}
-
 /// @nodoc
-mixin _$Contact {
+mixin _$ContactEntity {
   @Id(assignable: true)
   int get contactID => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
@@ -30,15 +26,16 @@ mixin _$Contact {
   String? get state => throw _privateConstructorUsedError;
   String? get zipCode => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ContactCopyWith<Contact> get copyWith => throw _privateConstructorUsedError;
+  $ContactEntityCopyWith<ContactEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ContactCopyWith<$Res> {
-  factory $ContactCopyWith(Contact value, $Res Function(Contact) then) =
-      _$ContactCopyWithImpl<$Res, Contact>;
+abstract class $ContactEntityCopyWith<$Res> {
+  factory $ContactEntityCopyWith(
+          ContactEntity value, $Res Function(ContactEntity) then) =
+      _$ContactEntityCopyWithImpl<$Res, ContactEntity>;
   @useResult
   $Res call(
       {@Id(assignable: true) int contactID,
@@ -52,9 +49,9 @@ abstract class $ContactCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ContactCopyWithImpl<$Res, $Val extends Contact>
-    implements $ContactCopyWith<$Res> {
-  _$ContactCopyWithImpl(this._value, this._then);
+class _$ContactEntityCopyWithImpl<$Res, $Val extends ContactEntity>
+    implements $ContactEntityCopyWith<$Res> {
+  _$ContactEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -111,10 +108,11 @@ class _$ContactCopyWithImpl<$Res, $Val extends Contact>
 }
 
 /// @nodoc
-abstract class _$$_ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
-  factory _$$_ContactCopyWith(
-          _$_Contact value, $Res Function(_$_Contact) then) =
-      __$$_ContactCopyWithImpl<$Res>;
+abstract class _$$_ContactEntityCopyWith<$Res>
+    implements $ContactEntityCopyWith<$Res> {
+  factory _$$_ContactEntityCopyWith(
+          _$_ContactEntity value, $Res Function(_$_ContactEntity) then) =
+      __$$_ContactEntityCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -129,10 +127,11 @@ abstract class _$$_ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ContactCopyWithImpl<$Res>
-    extends _$ContactCopyWithImpl<$Res, _$_Contact>
-    implements _$$_ContactCopyWith<$Res> {
-  __$$_ContactCopyWithImpl(_$_Contact _value, $Res Function(_$_Contact) _then)
+class __$$_ContactEntityCopyWithImpl<$Res>
+    extends _$ContactEntityCopyWithImpl<$Res, _$_ContactEntity>
+    implements _$$_ContactEntityCopyWith<$Res> {
+  __$$_ContactEntityCopyWithImpl(
+      _$_ContactEntity _value, $Res Function(_$_ContactEntity) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -147,7 +146,7 @@ class __$$_ContactCopyWithImpl<$Res>
     Object? state = freezed,
     Object? zipCode = freezed,
   }) {
-    return _then(_$_Contact(
+    return _then(_$_ContactEntity(
       contactID: null == contactID
           ? _value.contactID
           : contactID // ignore: cast_nullable_to_non_nullable
@@ -185,10 +184,10 @@ class __$$_ContactCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-@Entity(realClass: Contact)
-class _$_Contact implements _Contact {
-  _$_Contact(
+
+@Entity(realClass: ContactEntity)
+class _$_ContactEntity implements _ContactEntity {
+  _$_ContactEntity(
       {@Id(assignable: true) required this.contactID,
       required this.firstName,
       this.lastName,
@@ -197,9 +196,6 @@ class _$_Contact implements _Contact {
       this.city,
       this.state,
       this.zipCode});
-
-  factory _$_Contact.fromJson(Map<String, dynamic> json) =>
-      _$$_ContactFromJson(json);
 
   @override
   @Id(assignable: true)
@@ -221,14 +217,14 @@ class _$_Contact implements _Contact {
 
   @override
   String toString() {
-    return 'Contact(contactID: $contactID, firstName: $firstName, lastName: $lastName, streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, city: $city, state: $state, zipCode: $zipCode)';
+    return 'ContactEntity(contactID: $contactID, firstName: $firstName, lastName: $lastName, streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, city: $city, state: $state, zipCode: $zipCode)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Contact &&
+            other is _$_ContactEntity &&
             (identical(other.contactID, contactID) ||
                 other.contactID == contactID) &&
             (identical(other.firstName, firstName) ||
@@ -244,7 +240,6 @@ class _$_Contact implements _Contact {
             (identical(other.zipCode, zipCode) || other.zipCode == zipCode));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, contactID, firstName, lastName,
       streetAddress1, streetAddress2, city, state, zipCode);
@@ -252,19 +247,12 @@ class _$_Contact implements _Contact {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContactCopyWith<_$_Contact> get copyWith =>
-      __$$_ContactCopyWithImpl<_$_Contact>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ContactToJson(
-      this,
-    );
-  }
+  _$$_ContactEntityCopyWith<_$_ContactEntity> get copyWith =>
+      __$$_ContactEntityCopyWithImpl<_$_ContactEntity>(this, _$identity);
 }
 
-abstract class _Contact implements Contact {
-  factory _Contact(
+abstract class _ContactEntity implements ContactEntity {
+  factory _ContactEntity(
       {@Id(assignable: true) required final int contactID,
       required final String firstName,
       final String? lastName,
@@ -272,9 +260,7 @@ abstract class _Contact implements Contact {
       final String? streetAddress2,
       final String? city,
       final String? state,
-      final String? zipCode}) = _$_Contact;
-
-  factory _Contact.fromJson(Map<String, dynamic> json) = _$_Contact.fromJson;
+      final String? zipCode}) = _$_ContactEntity;
 
   @override
   @Id(assignable: true)
@@ -295,149 +281,6 @@ abstract class _Contact implements Contact {
   String? get zipCode;
   @override
   @JsonKey(ignore: true)
-  _$$_ContactCopyWith<_$_Contact> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-ContactsList _$ContactsListFromJson(Map<String, dynamic> json) {
-  return _ContactsList.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ContactsList {
-  List<Contact> get list => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ContactsListCopyWith<ContactsList> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ContactsListCopyWith<$Res> {
-  factory $ContactsListCopyWith(
-          ContactsList value, $Res Function(ContactsList) then) =
-      _$ContactsListCopyWithImpl<$Res, ContactsList>;
-  @useResult
-  $Res call({List<Contact> list});
-}
-
-/// @nodoc
-class _$ContactsListCopyWithImpl<$Res, $Val extends ContactsList>
-    implements $ContactsListCopyWith<$Res> {
-  _$ContactsListCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? list = null,
-  }) {
-    return _then(_value.copyWith(
-      list: null == list
-          ? _value.list
-          : list // ignore: cast_nullable_to_non_nullable
-              as List<Contact>,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_ContactsListCopyWith<$Res>
-    implements $ContactsListCopyWith<$Res> {
-  factory _$$_ContactsListCopyWith(
-          _$_ContactsList value, $Res Function(_$_ContactsList) then) =
-      __$$_ContactsListCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Contact> list});
-}
-
-/// @nodoc
-class __$$_ContactsListCopyWithImpl<$Res>
-    extends _$ContactsListCopyWithImpl<$Res, _$_ContactsList>
-    implements _$$_ContactsListCopyWith<$Res> {
-  __$$_ContactsListCopyWithImpl(
-      _$_ContactsList _value, $Res Function(_$_ContactsList) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? list = null,
-  }) {
-    return _then(_$_ContactsList(
-      list: null == list
-          ? _value._list
-          : list // ignore: cast_nullable_to_non_nullable
-              as List<Contact>,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_ContactsList implements _ContactsList {
-  const _$_ContactsList({required final List<Contact> list}) : _list = list;
-
-  factory _$_ContactsList.fromJson(Map<String, dynamic> json) =>
-      _$$_ContactsListFromJson(json);
-
-  final List<Contact> _list;
-  @override
-  List<Contact> get list {
-    if (_list is EqualUnmodifiableListView) return _list;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_list);
-  }
-
-  @override
-  String toString() {
-    return 'ContactsList(list: $list)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ContactsList &&
-            const DeepCollectionEquality().equals(other._list, _list));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_ContactsListCopyWith<_$_ContactsList> get copyWith =>
-      __$$_ContactsListCopyWithImpl<_$_ContactsList>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ContactsListToJson(
-      this,
-    );
-  }
-}
-
-abstract class _ContactsList implements ContactsList {
-  const factory _ContactsList({required final List<Contact> list}) =
-      _$_ContactsList;
-
-  factory _ContactsList.fromJson(Map<String, dynamic> json) =
-      _$_ContactsList.fromJson;
-
-  @override
-  List<Contact> get list;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ContactsListCopyWith<_$_ContactsList> get copyWith =>
+  _$$_ContactEntityCopyWith<_$_ContactEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }

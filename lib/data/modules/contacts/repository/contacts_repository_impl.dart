@@ -1,26 +1,35 @@
+import 'package:contacts_app/data/modules/contacts/models/mappers/contact_mapper.dart';
 import 'package:contacts_app/data/modules/contacts/sources/local/contacts_object_box_data_source.dart';
+import 'package:contacts_app/domain/modules/contacts/entities/index/index.dart';
 
-import '../models/models/index/index.dart';
+import '../../../../domain/modules/contacts/repository/contacts_repository.dart';
 import '../sources/local/conatcts_json_data_source.dart';
 
-class ContactsRepositoryImpl {
+class ContactsRepositoryImpl implements ContactsRepository {
   final ContactsJSONDataSource jsonDataSource;
   final ContactsObjectBoxDataSource objectBoxDataSource;
 
   ContactsRepositoryImpl({required this.jsonDataSource, required this.objectBoxDataSource});
 
-  Future<List<Contact>> getContactsFromJSON() {
-    return jsonDataSource.getContacts();
+  @override
+  Future<List<ContactEntity>> getContactsFromJSON() async {
+    var contactLocalDTOs = await jsonDataSource.getContacts();
+    return contactLocalDTOs.map((el) => ContactMapper.mapLocalDTOToEntity(el)).toList();
   }
 
-  List<Contact> getAllContacts() {
-    return objectBoxDataSource.getAllContacts();
+  @override
+  List<ContactEntity> getAllContacts() {
+    var contactLocalDTOs = objectBoxDataSource.getAllContacts();
+    return contactLocalDTOs.map((el) => ContactMapper.mapLocalDTOToEntity(el)).toList();
   }
 
-  void updateContact(Contact contact) {
-    objectBoxDataSource.updateContact(contact);
+  @override
+  void updateContact(ContactEntity contact) {
+    var contactLocalDTO = ContactMapper.mapEntityToLocalDTO(contact);
+    objectBoxDataSource.updateContact(contactLocalDTO);
   }
 
+  @override
   void addNewContact({
     required String firstName,
     String? lastName,
@@ -41,11 +50,15 @@ class ContactsRepositoryImpl {
     );
   }
 
-  void addContacts(List<Contact> contacts) {
-    objectBoxDataSource.addContacts(contacts);
+  @override
+  void addContacts(List<ContactEntity> contacts) {
+    var contactLocalDTOs = contacts.map((el) => ContactMapper.mapEntityToLocalDTO(el)).toList();
+    objectBoxDataSource.addContacts(contactLocalDTOs);
   }
 
-  void deleteContact(Contact contact) {
-    objectBoxDataSource.deleteContact(contact);
+  @override
+  void deleteContact(ContactEntity contact) {
+    var contactLocalDTO = ContactMapper.mapEntityToLocalDTO(contact);
+    objectBoxDataSource.deleteContact(contactLocalDTO);
   }
 }

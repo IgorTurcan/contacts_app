@@ -14,55 +14,54 @@ import 'package:objectbox/internal.dart'; // generated code can access "internal
 import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
-import '../data/modules/contacts/models/models/index/index.dart';
-
+import '../../domain/modules/contacts/entities/index/index.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
 final _entities = <ModelEntity>[
   ModelEntity(
-      id: const IdUid(1, 5592791365605061583),
-      name: 'Contact',
-      lastPropertyId: const IdUid(8, 6210020764045629536),
+      id: const IdUid(1, 4896731396116442298),
+      name: 'ContactEntity',
+      lastPropertyId: const IdUid(8, 1449736808725827604),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 2189666634114018873),
+            id: const IdUid(1, 1365141472549008966),
             name: 'contactID',
             type: 6,
             flags: 129),
         ModelProperty(
-            id: const IdUid(2, 8530521181129975664),
+            id: const IdUid(2, 4534462709780637783),
             name: 'firstName',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 8643657508675936288),
+            id: const IdUid(3, 3678106935471739160),
             name: 'lastName',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 1936664703868259313),
+            id: const IdUid(4, 2354887578129091841),
             name: 'streetAddress1',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 6228825615774509710),
+            id: const IdUid(5, 6106001542937370310),
             name: 'streetAddress2',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(6, 2106092497897951965),
+            id: const IdUid(6, 4393007574620987319),
             name: 'city',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(7, 286307510699960787),
+            id: const IdUid(7, 1194861477871343128),
             name: 'state',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(8, 6210020764045629536),
+            id: const IdUid(8, 1449736808725827604),
             name: 'zipCode',
             type: 9,
             flags: 0)
@@ -91,7 +90,7 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(1, 5592791365605061583),
+      lastEntityId: const IdUid(1, 4896731396116442298),
       lastIndexId: const IdUid(0, 0),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
@@ -104,21 +103,21 @@ ModelDefinition getObjectBoxModel() {
       version: 1);
 
   final bindings = <Type, EntityDefinition>{
-    Contact: EntityDefinition<Contact>(
+    ContactEntity: EntityDefinition<ContactEntity>(
         model: _entities[0],
-        toOneRelations: (Contact object) => [],
-        toManyRelations: (Contact object) => {},
-        getId: (Contact object) => object.contactID,
-        setId: (Contact object, int id) {
+        toOneRelations: (ContactEntity object) => [],
+        toManyRelations: (ContactEntity object) => {},
+        getId: (ContactEntity object) => object.contactID,
+        setId: (ContactEntity object, int id) {
           if (object.contactID != id) {
-            throw ArgumentError('Field Contact.contactID is read-only '
+            throw ArgumentError('Field ContactEntity.contactID is read-only '
                 '(final or getter-only) and it was declared to be self-assigned. '
                 'However, the currently inserted object (.contactID=${object.contactID}) '
                 "doesn't match the inserted ID (ID $id). "
                 'You must assign an ID before calling [box.put()].');
           }
         },
-        objectToFB: (Contact object, fb.Builder fbb) {
+        objectToFB: (ContactEntity object, fb.Builder fbb) {
           final firstNameOffset = fbb.writeString(object.firstName);
           final lastNameOffset = object.lastName == null
               ? null
@@ -151,7 +150,7 @@ ModelDefinition getObjectBoxModel() {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
 
-          final object = Contact(
+          final object = ContactEntity(
               contactID:
                   const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
               firstName: const fb.StringReader(asciiOptimization: true)
@@ -176,35 +175,37 @@ ModelDefinition getObjectBoxModel() {
   return ModelDefinition(model, bindings);
 }
 
-/// [Contact] entity fields to define ObjectBox queries.
-class Contact_ {
-  /// see [Contact.contactID]
+/// [ContactEntity] entity fields to define ObjectBox queries.
+class ContactEntity_ {
+  /// see [ContactEntity.contactID]
   static final contactID =
-      QueryIntegerProperty<Contact>(_entities[0].properties[0]);
+      QueryIntegerProperty<ContactEntity>(_entities[0].properties[0]);
 
-  /// see [Contact.firstName]
+  /// see [ContactEntity.firstName]
   static final firstName =
-      QueryStringProperty<Contact>(_entities[0].properties[1]);
+      QueryStringProperty<ContactEntity>(_entities[0].properties[1]);
 
-  /// see [Contact.lastName]
+  /// see [ContactEntity.lastName]
   static final lastName =
-      QueryStringProperty<Contact>(_entities[0].properties[2]);
+      QueryStringProperty<ContactEntity>(_entities[0].properties[2]);
 
-  /// see [Contact.streetAddress1]
+  /// see [ContactEntity.streetAddress1]
   static final streetAddress1 =
-      QueryStringProperty<Contact>(_entities[0].properties[3]);
+      QueryStringProperty<ContactEntity>(_entities[0].properties[3]);
 
-  /// see [Contact.streetAddress2]
+  /// see [ContactEntity.streetAddress2]
   static final streetAddress2 =
-      QueryStringProperty<Contact>(_entities[0].properties[4]);
+      QueryStringProperty<ContactEntity>(_entities[0].properties[4]);
 
-  /// see [Contact.city]
-  static final city = QueryStringProperty<Contact>(_entities[0].properties[5]);
+  /// see [ContactEntity.city]
+  static final city =
+      QueryStringProperty<ContactEntity>(_entities[0].properties[5]);
 
-  /// see [Contact.state]
-  static final state = QueryStringProperty<Contact>(_entities[0].properties[6]);
+  /// see [ContactEntity.state]
+  static final state =
+      QueryStringProperty<ContactEntity>(_entities[0].properties[6]);
 
-  /// see [Contact.zipCode]
+  /// see [ContactEntity.zipCode]
   static final zipCode =
-      QueryStringProperty<Contact>(_entities[0].properties[7]);
+      QueryStringProperty<ContactEntity>(_entities[0].properties[7]);
 }

@@ -1,9 +1,10 @@
 part of contact_library;
 
 @freezed
-class Contact with _$Contact {
-  @Entity(realClass: Contact)
-  factory Contact({
+class ContactEntity with _$ContactEntity {
+
+  @Entity(realClass: ContactEntity)
+  factory ContactEntity({
     @Id(assignable: true) required int contactID,
     required String firstName,
     String? lastName,
@@ -12,7 +13,5 @@ class Contact with _$Contact {
     String? city,
     String? state,
     String? zipCode,
-  }) = _Contact;
-
-  factory Contact.fromJson(Map<String, dynamic> json) => _$ContactFromJson(json);
+  }) = _ContactEntity;
 }

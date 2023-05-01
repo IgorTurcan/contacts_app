@@ -1,29 +1,18 @@
-import '../modules/contacts/models/models/index/index.dart';
-import '../../presentation/objectbox.g.dart';
+import '../modules/contacts/models/index/index.dart';
+import 'objectbox.g.dart';
 
 class ObjectBox {
   late final Store _store;
 
-  late final Box<Contact> contactBox;
-
-  // int get _randomID => Random().nextInt(100000) + 1;
+  late final Box<ContactLocalDTO> contactBox;
 
   ObjectBox() {
     ObjectBox.create();
   }
 
   ObjectBox._create(this._store) {
-    contactBox = Box<Contact>(_store);
-
-    // if (contactBox.isEmpty()) {
-    //   _putDemoContacts();
-    // }
+    contactBox = Box<ContactLocalDTO>(_store);
   }
-
-  // void _putDemoContacts() async {
-  //   var res = await JSONLoader().getInitialContacts();
-  //   contactBox.putMany(res);
-  // }
 
   static Future<ObjectBox> create() async {
     final store = await openStore();

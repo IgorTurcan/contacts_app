@@ -6,7 +6,8 @@ part of contact_library;
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Contact _$$_ContactFromJson(Map<String, dynamic> json) => _$_Contact(
+_$_ContactLocalDTO _$$_ContactLocalDTOFromJson(Map<String, dynamic> json) =>
+    _$_ContactLocalDTO(
       contactID: json['contactID'] as int,
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String?,
@@ -17,7 +18,7 @@ _$_Contact _$$_ContactFromJson(Map<String, dynamic> json) => _$_Contact(
       zipCode: json['zipCode'] as String?,
     );
 
-Map<String, dynamic> _$$_ContactToJson(_$_Contact instance) =>
+Map<String, dynamic> _$$_ContactLocalDTOToJson(_$_ContactLocalDTO instance) =>
     <String, dynamic>{
       'contactID': instance.contactID,
       'firstName': instance.firstName,
@@ -29,14 +30,16 @@ Map<String, dynamic> _$$_ContactToJson(_$_Contact instance) =>
       'zipCode': instance.zipCode,
     };
 
-_$_ContactsList _$$_ContactsListFromJson(Map<String, dynamic> json) =>
-    _$_ContactsList(
+_$_ContactsListLocalDTO _$$_ContactsListLocalDTOFromJson(
+        Map<String, dynamic> json) =>
+    _$_ContactsListLocalDTO(
       list: (json['list'] as List<dynamic>)
-          .map((e) => Contact.fromJson(e as Map<String, dynamic>))
+          .map((e) => ContactLocalDTO.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_ContactsListToJson(_$_ContactsList instance) =>
+Map<String, dynamic> _$$_ContactsListLocalDTOToJson(
+        _$_ContactsListLocalDTO instance) =>
     <String, dynamic>{
       'list': instance.list,
     };

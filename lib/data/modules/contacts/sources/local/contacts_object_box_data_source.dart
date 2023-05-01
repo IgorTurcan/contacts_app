@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:contacts_app/data/core/object_box.dart';
 
-import '../../models/models/index/index.dart';
+import '../../models/index/index.dart';
 
 abstract class ContactsObjectBoxDataSource {
-  List<Contact> getAllContacts();
+  List<ContactLocalDTO> getAllContacts();
 
-  void updateContact(Contact contact);
+  void updateContact(ContactLocalDTO contact);
 
   void addNewContact({
     required String firstName,
@@ -19,9 +19,9 @@ abstract class ContactsObjectBoxDataSource {
     String? zipCode,
   });
 
-  void addContacts(List<Contact> contacts);
+  void addContacts(List<ContactLocalDTO> contacts);
 
-  void deleteContact(Contact contact);
+  void deleteContact(ContactLocalDTO contact);
 }
 
 class ContactsObjectBoxDataSourceImpl implements ContactsObjectBoxDataSource {
@@ -32,12 +32,12 @@ class ContactsObjectBoxDataSourceImpl implements ContactsObjectBoxDataSource {
   int get _randomID => Random().nextInt(100000) + 1;
 
   @override
-  List<Contact> getAllContacts() {
+  List<ContactLocalDTO> getAllContacts() {
     return objectBox.contactBox.getAll();
   }
 
   @override
-  void updateContact(Contact contact) {
+  void updateContact(ContactLocalDTO contact) {
     bool removed = objectBox.contactBox.remove(contact.contactID);
     if (removed) {
       objectBox.contactBox.put(contact);
@@ -58,7 +58,7 @@ class ContactsObjectBoxDataSourceImpl implements ContactsObjectBoxDataSource {
     while (objectBox.contactBox.contains(newID)) {
       newID = _randomID;
     }
-    Contact newContact = Contact(
+    ContactLocalDTO newContact = ContactLocalDTO(
       contactID: newID,
       firstName: firstName,
       lastName: lastName,
@@ -72,12 +72,12 @@ class ContactsObjectBoxDataSourceImpl implements ContactsObjectBoxDataSource {
   }
 
   @override
-  void addContacts(List<Contact> contacts) {
+  void addContacts(List<ContactLocalDTO> contacts) {
     objectBox.contactBox.putMany(contacts);
   }
 
   @override
-  void deleteContact(Contact contact) {
+  void deleteContact(ContactLocalDTO contact) {
     objectBox.contactBox.remove(contact.contactID);
   }
 }
