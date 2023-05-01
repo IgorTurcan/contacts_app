@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../di/injection_container.dart';
+import 'base/app_router.dart';
 import 'blocs/contacts_bloc/contacts_bloc.dart';
 import 'cubits/contact_details_cubit.dart';
-import 'pages/contacts_page/contacts_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => ContactsBloc()),
         BlocProvider(create: (_) => ContactDetailsCubit()),
       ],
-      child: const MaterialApp(
+      child: MaterialApp.router(
         title: 'Contacts App',
-        home: ContactsPage(),
+        routerConfig: AppRouter.router,
       ),
     );
   }
