@@ -4,6 +4,7 @@ part of contact_library;
 class ContactEntity with _$ContactEntity {
   factory ContactEntity({
     required int contactID,
+    required String phoneNumber,
     required String firstName,
     String? lastName,
     String? streetAddress1,

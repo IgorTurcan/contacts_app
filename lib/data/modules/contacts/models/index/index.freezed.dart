@@ -22,6 +22,7 @@ ContactLocalDTO _$ContactLocalDTOFromJson(Map<String, dynamic> json) {
 mixin _$ContactLocalDTO {
   @Id(assignable: true)
   int get contactID => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
   String? get streetAddress1 => throw _privateConstructorUsedError;
@@ -44,6 +45,7 @@ abstract class $ContactLocalDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@Id(assignable: true) int contactID,
+      String phoneNumber,
       String firstName,
       String? lastName,
       String? streetAddress1,
@@ -67,6 +69,7 @@ class _$ContactLocalDTOCopyWithImpl<$Res, $Val extends ContactLocalDTO>
   @override
   $Res call({
     Object? contactID = null,
+    Object? phoneNumber = null,
     Object? firstName = null,
     Object? lastName = freezed,
     Object? streetAddress1 = freezed,
@@ -80,6 +83,10 @@ class _$ContactLocalDTOCopyWithImpl<$Res, $Val extends ContactLocalDTO>
           ? _value.contactID
           : contactID // ignore: cast_nullable_to_non_nullable
               as int,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -122,6 +129,7 @@ abstract class _$$_ContactLocalDTOCopyWith<$Res>
   @useResult
   $Res call(
       {@Id(assignable: true) int contactID,
+      String phoneNumber,
       String firstName,
       String? lastName,
       String? streetAddress1,
@@ -143,6 +151,7 @@ class __$$_ContactLocalDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object? contactID = null,
+    Object? phoneNumber = null,
     Object? firstName = null,
     Object? lastName = freezed,
     Object? streetAddress1 = freezed,
@@ -156,6 +165,10 @@ class __$$_ContactLocalDTOCopyWithImpl<$Res>
           ? _value.contactID
           : contactID // ignore: cast_nullable_to_non_nullable
               as int,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -194,6 +207,7 @@ class __$$_ContactLocalDTOCopyWithImpl<$Res>
 class _$_ContactLocalDTO implements _ContactLocalDTO {
   _$_ContactLocalDTO(
       {@Id(assignable: true) required this.contactID,
+      required this.phoneNumber,
       required this.firstName,
       this.lastName,
       this.streetAddress1,
@@ -208,6 +222,8 @@ class _$_ContactLocalDTO implements _ContactLocalDTO {
   @override
   @Id(assignable: true)
   final int contactID;
+  @override
+  final String phoneNumber;
   @override
   final String firstName;
   @override
@@ -225,7 +241,7 @@ class _$_ContactLocalDTO implements _ContactLocalDTO {
 
   @override
   String toString() {
-    return 'ContactLocalDTO(contactID: $contactID, firstName: $firstName, lastName: $lastName, streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, city: $city, state: $state, zipCode: $zipCode)';
+    return 'ContactLocalDTO(contactID: $contactID, phoneNumber: $phoneNumber, firstName: $firstName, lastName: $lastName, streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, city: $city, state: $state, zipCode: $zipCode)';
   }
 
   @override
@@ -235,6 +251,8 @@ class _$_ContactLocalDTO implements _ContactLocalDTO {
             other is _$_ContactLocalDTO &&
             (identical(other.contactID, contactID) ||
                 other.contactID == contactID) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -250,8 +268,17 @@ class _$_ContactLocalDTO implements _ContactLocalDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, contactID, firstName, lastName,
-      streetAddress1, streetAddress2, city, state, zipCode);
+  int get hashCode => Object.hash(
+      runtimeType,
+      contactID,
+      phoneNumber,
+      firstName,
+      lastName,
+      streetAddress1,
+      streetAddress2,
+      city,
+      state,
+      zipCode);
 
   @JsonKey(ignore: true)
   @override
@@ -270,6 +297,7 @@ class _$_ContactLocalDTO implements _ContactLocalDTO {
 abstract class _ContactLocalDTO implements ContactLocalDTO {
   factory _ContactLocalDTO(
       {@Id(assignable: true) required final int contactID,
+      required final String phoneNumber,
       required final String firstName,
       final String? lastName,
       final String? streetAddress1,
@@ -284,6 +312,8 @@ abstract class _ContactLocalDTO implements ContactLocalDTO {
   @override
   @Id(assignable: true)
   int get contactID;
+  @override
+  String get phoneNumber;
   @override
   String get firstName;
   @override

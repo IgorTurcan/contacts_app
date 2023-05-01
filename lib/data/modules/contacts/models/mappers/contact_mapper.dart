@@ -5,6 +5,7 @@ class ContactMapper {
   static ContactEntity mapLocalDTOToEntity(ContactLocalDTO input) {
     return ContactEntity(
       contactID: input.contactID,
+      phoneNumber: input.phoneNumber,
       firstName: input.firstName,
       lastName: input.lastName,
       streetAddress1: input.streetAddress1,
@@ -18,6 +19,7 @@ class ContactMapper {
   static ContactLocalDTO mapEntityToLocalDTO(ContactEntity input) {
     return ContactLocalDTO(
       contactID: input.contactID,
+      phoneNumber: input.phoneNumber,
       firstName: input.firstName,
       lastName: input.lastName,
       streetAddress1: input.streetAddress1,

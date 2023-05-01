@@ -5,6 +5,7 @@ class ContactLocalDTO with _$ContactLocalDTO {
   @Entity(realClass: ContactLocalDTO)
   factory ContactLocalDTO({
     @Id(assignable: true) required int contactID,
+    required String phoneNumber,
     required String firstName,
     String? lastName,
     String? streetAddress1,

@@ -7,6 +7,7 @@ class InitContacts extends ContactsEvent {}
 class PopulateContacts extends ContactsEvent {}
 
 class AddNewContact extends ContactsEvent {
+  final String phoneNumber;
   final String firstName;
   final String? lastName;
   final String? streetAddress1;
@@ -16,6 +17,7 @@ class AddNewContact extends ContactsEvent {
   final String? zipCode;
 
   AddNewContact({
+    required this.phoneNumber,
     required this.firstName,
     this.lastName,
     this.streetAddress1,

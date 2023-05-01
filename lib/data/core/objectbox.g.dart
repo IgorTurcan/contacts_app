@@ -22,7 +22,7 @@ final _entities = <ModelEntity>[
   ModelEntity(
       id: const IdUid(1, 6960171546517005620),
       name: 'ContactLocalDTO',
-      lastPropertyId: const IdUid(8, 5640961840068594806),
+      lastPropertyId: const IdUid(9, 3879656536786207578),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
@@ -63,6 +63,11 @@ final _entities = <ModelEntity>[
         ModelProperty(
             id: const IdUid(8, 5640961840068594806),
             name: 'zipCode',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(9, 3879656536786207578),
+            name: 'phoneNumber',
             type: 9,
             flags: 0)
       ],
@@ -134,7 +139,8 @@ ModelDefinition getObjectBoxModel() {
               object.state == null ? null : fbb.writeString(object.state!);
           final zipCodeOffset =
               object.zipCode == null ? null : fbb.writeString(object.zipCode!);
-          fbb.startTable(9);
+          final phoneNumberOffset = fbb.writeString(object.phoneNumber);
+          fbb.startTable(10);
           fbb.addInt64(0, object.contactID);
           fbb.addOffset(1, firstNameOffset);
           fbb.addOffset(2, lastNameOffset);
@@ -143,6 +149,7 @@ ModelDefinition getObjectBoxModel() {
           fbb.addOffset(5, cityOffset);
           fbb.addOffset(6, stateOffset);
           fbb.addOffset(7, zipCodeOffset);
+          fbb.addOffset(8, phoneNumberOffset);
           fbb.finish(fbb.endTable());
           return object.contactID;
         },
@@ -153,6 +160,8 @@ ModelDefinition getObjectBoxModel() {
           final object = ContactLocalDTO(
               contactID:
                   const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
+              phoneNumber: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 20, ''),
               firstName: const fb.StringReader(asciiOptimization: true)
                   .vTableGet(buffer, rootOffset, 6, ''),
               lastName: const fb.StringReader(asciiOptimization: true)
@@ -165,8 +174,7 @@ ModelDefinition getObjectBoxModel() {
                   .vTableGetNullable(buffer, rootOffset, 14),
               state: const fb.StringReader(asciiOptimization: true)
                   .vTableGetNullable(buffer, rootOffset, 16),
-              zipCode: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 18));
+              zipCode: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 18));
 
           return object;
         })
@@ -208,4 +216,8 @@ class ContactLocalDTO_ {
   /// see [ContactLocalDTO.zipCode]
   static final zipCode =
       QueryStringProperty<ContactLocalDTO>(_entities[0].properties[7]);
+
+  /// see [ContactLocalDTO.phoneNumber]
+  static final phoneNumber =
+      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[8]);
 }

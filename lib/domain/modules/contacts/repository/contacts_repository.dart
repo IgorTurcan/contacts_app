@@ -8,6 +8,7 @@ abstract class ContactsRepository {
   void updateContact(ContactEntity contact);
 
   void addNewContact({
+    required String phoneNumber,
     required String firstName,
     String? lastName,
     String? streetAddress1,

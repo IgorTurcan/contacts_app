@@ -28,15 +28,12 @@ class ContactsPage extends StatelessWidget {
               itemCount: contacts.length,
               itemBuilder: (_, index) {
                 var contact = contacts[index];
-                return InkWell(
+                return GestureDetector(
                   onTap: () {
                     BlocProvider.of<ContactDetailsCubit>(context).changeContact(contact);
                     context.go(AppRoutes.contactDetails.path);
                   },
-                  child: Contact(
-                    firstName: contact.firstName,
-                    lastName: contact.lastName,
-                  ),
+                  child: Contact(contact: contact),
                 );
               },
             );

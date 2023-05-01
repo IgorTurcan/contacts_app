@@ -1,6 +1,7 @@
 [
   {
     "contactID": 1,
+    "phoneNumber": "303-555-0198",
     "firstName": "John",
     "lastName": "Doe",
     "streetAddress1": "123 Main St",
@@ -11,6 +12,7 @@
   },
   {
     "contactID": 2,
+    "phoneNumber": "415-555-7684",
     "firstName": "Jane",
     "lastName": "Doe",
     "streetAddress1": "456 Oak Ave",
@@ -21,6 +23,7 @@
   },
   {
     "contactID": 3,
+    "phoneNumber": "678-555-2713",
     "firstName": "Bob",
     "lastName": "Smith",
     "streetAddress1": "789 Elm St",
@@ -31,6 +34,7 @@
   },
   {
     "contactID": 4,
+    "phoneNumber": "214-555-8465",
     "firstName": "Alice",
     "lastName": "Johnson",
     "streetAddress1": "987 Pine St",
@@ -41,6 +45,7 @@
   },
   {
     "contactID": 5,
+    "phoneNumber": "718-555-3920",
     "firstName": "David",
     "lastName": "Williams",
     "streetAddress1": "654 Maple Ave",
@@ -51,6 +56,7 @@
   },
   {
     "contactID": 6,
+    "phoneNumber": "619-555-1384",
     "firstName": "Mary",
     "lastName": "Brown",
     "streetAddress1": "321 Cedar St",
@@ -61,6 +67,7 @@
   },
   {
     "contactID": 7,
+    "phoneNumber": "312-555-7380",
     "firstName": "Tom",
     "lastName": "Lee",
     "streetAddress1": "555 Oak St",
@@ -71,6 +78,7 @@
   },
   {
     "contactID": 8,
+    "phoneNumber": "202-555-6729",
     "firstName": "Sara",
     "lastName": "Garcia",
     "streetAddress1": "888 Pine St",
@@ -81,6 +89,7 @@
   },
   {
     "contactID": 9,
+    "phoneNumber": "786-555-5698",
     "firstName": "Mark",
     "lastName": "Smith",
     "streetAddress1": "222 Maple Ave",
@@ -91,6 +100,7 @@
   },
   {
     "contactID": 10,
+    "phoneNumber": "503-555-2215",
     "firstName": "Emily",
     "lastName": "Chen",
     "streetAddress1": "333 Cedar St",

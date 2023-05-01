@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:6960171546517005620",
-      "lastPropertyId": "8:5640961840068594806",
+      "lastPropertyId": "9:3879656536786207578",
       "name": "ContactLocalDTO",
       "properties": [
         {
@@ -47,6 +47,11 @@
         {
           "id": "8:5640961840068594806",
           "name": "zipCode",
+          "type": 9
+        },
+        {
+          "id": "9:3879656536786207578",
+          "name": "phoneNumber",
           "type": 9
         }
       ],

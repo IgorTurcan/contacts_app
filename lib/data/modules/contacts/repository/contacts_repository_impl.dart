@@ -31,6 +31,7 @@ class ContactsRepositoryImpl implements ContactsRepository {
 
   @override
   void addNewContact({
+    required String phoneNumber,
     required String firstName,
     String? lastName,
     String? streetAddress1,
@@ -40,6 +41,7 @@ class ContactsRepositoryImpl implements ContactsRepository {
     String? zipCode,
   }) {
     objectBoxDataSource.addNewContact(
+      phoneNumber: phoneNumber,
       firstName: firstName,
       lastName: lastName,
       streetAddress1: streetAddress1,

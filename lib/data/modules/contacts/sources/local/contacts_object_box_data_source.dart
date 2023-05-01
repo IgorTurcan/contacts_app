@@ -10,6 +10,7 @@ abstract class ContactsObjectBoxDataSource {
   void updateContact(ContactLocalDTO contact);
 
   void addNewContact({
+    required String phoneNumber,
     required String firstName,
     String? lastName,
     String? streetAddress1,
@@ -46,6 +47,7 @@ class ContactsObjectBoxDataSourceImpl implements ContactsObjectBoxDataSource {
 
   @override
   void addNewContact({
+    required String phoneNumber,
     required String firstName,
     String? lastName,
     String? streetAddress1,
@@ -60,6 +62,7 @@ class ContactsObjectBoxDataSourceImpl implements ContactsObjectBoxDataSource {
     }
     ContactLocalDTO newContact = ContactLocalDTO(
       contactID: newID,
+      phoneNumber: phoneNumber,
       firstName: firstName,
       lastName: lastName,
       streetAddress1: streetAddress1,

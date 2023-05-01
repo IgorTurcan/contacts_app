@@ -7,6 +7,7 @@ class AddNewContactUsecase {
 
   void call(AddNewContactParams params) {
     repository.addNewContact(
+      phoneNumber: params.phoneNumber,
       firstName: params.firstName,
       lastName: params.lastName,
       streetAddress1: params.streetAddress1,
@@ -19,6 +20,7 @@ class AddNewContactUsecase {
 }
 
 class AddNewContactParams {
+  final String phoneNumber;
   final String firstName;
   final String? lastName;
   final String? streetAddress1;
@@ -28,6 +30,7 @@ class AddNewContactParams {
   final String? zipCode;
 
   AddNewContactParams({
+    required this.phoneNumber,
     required this.firstName,
     required this.lastName,
     required this.streetAddress1,

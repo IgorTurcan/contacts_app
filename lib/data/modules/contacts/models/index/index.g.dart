@@ -9,6 +9,7 @@ part of contact_library;
 _$_ContactLocalDTO _$$_ContactLocalDTOFromJson(Map<String, dynamic> json) =>
     _$_ContactLocalDTO(
       contactID: json['contactID'] as int,
+      phoneNumber: json['phoneNumber'] as String,
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String?,
       streetAddress1: json['streetAddress1'] as String?,
@@ -21,6 +22,7 @@ _$_ContactLocalDTO _$$_ContactLocalDTOFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_ContactLocalDTOToJson(_$_ContactLocalDTO instance) =>
     <String, dynamic>{
       'contactID': instance.contactID,
+      'phoneNumber': instance.phoneNumber,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
       'streetAddress1': instance.streetAddress1,

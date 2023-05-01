@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ContactEntity {
   int get contactID => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
   String? get streetAddress1 => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ abstract class $ContactEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {int contactID,
+      String phoneNumber,
       String firstName,
       String? lastName,
       String? streetAddress1,
@@ -61,6 +63,7 @@ class _$ContactEntityCopyWithImpl<$Res, $Val extends ContactEntity>
   @override
   $Res call({
     Object? contactID = null,
+    Object? phoneNumber = null,
     Object? firstName = null,
     Object? lastName = freezed,
     Object? streetAddress1 = freezed,
@@ -74,6 +77,10 @@ class _$ContactEntityCopyWithImpl<$Res, $Val extends ContactEntity>
           ? _value.contactID
           : contactID // ignore: cast_nullable_to_non_nullable
               as int,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -116,6 +123,7 @@ abstract class _$$_ContactEntityCopyWith<$Res>
   @useResult
   $Res call(
       {int contactID,
+      String phoneNumber,
       String firstName,
       String? lastName,
       String? streetAddress1,
@@ -137,6 +145,7 @@ class __$$_ContactEntityCopyWithImpl<$Res>
   @override
   $Res call({
     Object? contactID = null,
+    Object? phoneNumber = null,
     Object? firstName = null,
     Object? lastName = freezed,
     Object? streetAddress1 = freezed,
@@ -150,6 +159,10 @@ class __$$_ContactEntityCopyWithImpl<$Res>
           ? _value.contactID
           : contactID // ignore: cast_nullable_to_non_nullable
               as int,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -187,6 +200,7 @@ class __$$_ContactEntityCopyWithImpl<$Res>
 class _$_ContactEntity implements _ContactEntity {
   _$_ContactEntity(
       {required this.contactID,
+      required this.phoneNumber,
       required this.firstName,
       this.lastName,
       this.streetAddress1,
@@ -197,6 +211,8 @@ class _$_ContactEntity implements _ContactEntity {
 
   @override
   final int contactID;
+  @override
+  final String phoneNumber;
   @override
   final String firstName;
   @override
@@ -214,7 +230,7 @@ class _$_ContactEntity implements _ContactEntity {
 
   @override
   String toString() {
-    return 'ContactEntity(contactID: $contactID, firstName: $firstName, lastName: $lastName, streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, city: $city, state: $state, zipCode: $zipCode)';
+    return 'ContactEntity(contactID: $contactID, phoneNumber: $phoneNumber, firstName: $firstName, lastName: $lastName, streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, city: $city, state: $state, zipCode: $zipCode)';
   }
 
   @override
@@ -224,6 +240,8 @@ class _$_ContactEntity implements _ContactEntity {
             other is _$_ContactEntity &&
             (identical(other.contactID, contactID) ||
                 other.contactID == contactID) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -238,8 +256,17 @@ class _$_ContactEntity implements _ContactEntity {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, contactID, firstName, lastName,
-      streetAddress1, streetAddress2, city, state, zipCode);
+  int get hashCode => Object.hash(
+      runtimeType,
+      contactID,
+      phoneNumber,
+      firstName,
+      lastName,
+      streetAddress1,
+      streetAddress2,
+      city,
+      state,
+      zipCode);
 
   @JsonKey(ignore: true)
   @override
@@ -251,6 +278,7 @@ class _$_ContactEntity implements _ContactEntity {
 abstract class _ContactEntity implements ContactEntity {
   factory _ContactEntity(
       {required final int contactID,
+      required final String phoneNumber,
       required final String firstName,
       final String? lastName,
       final String? streetAddress1,
@@ -261,6 +289,8 @@ abstract class _ContactEntity implements ContactEntity {
 
   @override
   int get contactID;
+  @override
+  String get phoneNumber;
   @override
   String get firstName;
   @override

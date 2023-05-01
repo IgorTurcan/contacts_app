@@ -33,6 +33,7 @@ class ContactsBloc extends Bloc<ContactsEvent, List<ContactEntity>> {
     on<AddNewContact>((event, emit) {
       _addNewContactUsecase.call(
         AddNewContactParams(
+          phoneNumber: event.phoneNumber,
           firstName: event.firstName,
           lastName: event.lastName,
           streetAddress1: event.streetAddress1,
