@@ -6,10 +6,6 @@ class ObjectBox {
 
   late final Box<ContactLocalDTO> contactBox;
 
-  ObjectBox() {
-    ObjectBox.create();
-  }
-
   ObjectBox._create(this._store) {
     contactBox = Box<ContactLocalDTO>(_store);
   }

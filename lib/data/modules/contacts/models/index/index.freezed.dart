@@ -20,6 +20,7 @@ ContactLocalDTO _$ContactLocalDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ContactLocalDTO {
+  @Id(assignable: true)
   int get contactID => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
@@ -42,7 +43,7 @@ abstract class $ContactLocalDTOCopyWith<$Res> {
       _$ContactLocalDTOCopyWithImpl<$Res, ContactLocalDTO>;
   @useResult
   $Res call(
-      {int contactID,
+      {@Id(assignable: true) int contactID,
       String firstName,
       String? lastName,
       String? streetAddress1,
@@ -120,7 +121,7 @@ abstract class _$$_ContactLocalDTOCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int contactID,
+      {@Id(assignable: true) int contactID,
       String firstName,
       String? lastName,
       String? streetAddress1,
@@ -189,9 +190,10 @@ class __$$_ContactLocalDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@Entity(realClass: ContactLocalDTO)
 class _$_ContactLocalDTO implements _ContactLocalDTO {
   _$_ContactLocalDTO(
-      {required this.contactID,
+      {@Id(assignable: true) required this.contactID,
       required this.firstName,
       this.lastName,
       this.streetAddress1,
@@ -204,6 +206,7 @@ class _$_ContactLocalDTO implements _ContactLocalDTO {
       _$$_ContactLocalDTOFromJson(json);
 
   @override
+  @Id(assignable: true)
   final int contactID;
   @override
   final String firstName;
@@ -266,7 +269,7 @@ class _$_ContactLocalDTO implements _ContactLocalDTO {
 
 abstract class _ContactLocalDTO implements ContactLocalDTO {
   factory _ContactLocalDTO(
-      {required final int contactID,
+      {@Id(assignable: true) required final int contactID,
       required final String firstName,
       final String? lastName,
       final String? streetAddress1,
@@ -279,6 +282,7 @@ abstract class _ContactLocalDTO implements ContactLocalDTO {
       _$_ContactLocalDTO.fromJson;
 
   @override
+  @Id(assignable: true)
   int get contactID;
   @override
   String get firstName;

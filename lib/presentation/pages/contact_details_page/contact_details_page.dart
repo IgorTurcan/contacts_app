@@ -1,9 +1,7 @@
+import 'package:contacts_app/domain/modules/contacts/entities/index/index.dart';
 import 'package:contacts_app/presentation/cubits/contact_details_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../data/modules/contacts/models/models/index/index.dart';
-
 
 class ContactDetailsPage extends StatelessWidget {
   const ContactDetailsPage({Key? key}) : super(key: key);
@@ -12,7 +10,7 @@ class ContactDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Contact details')),
-      body: BlocBuilder<ContactDetailsCubit, Contact?>(
+      body: BlocBuilder<ContactDetailsCubit, ContactEntity?>(
         builder: (_, contact) {
           return ListView(
             children: [

@@ -1,7 +1,7 @@
+import 'package:contacts_app/domain/modules/contacts/entities/index/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/modules/contacts/models/models/index/index.dart';
 import '../../blocs/contacts_bloc/contacts_bloc.dart';
 import '../contact_details_page/contact_details_page.dart';
 import '../../cubits/contact_details_cubit.dart';
@@ -13,7 +13,7 @@ class ContactsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Contacts page')),
-      body: BlocBuilder<ContactsBloc, List<Contact>>(
+      body: BlocBuilder<ContactsBloc, List<ContactEntity>>(
         builder: (_, contacts) {
           return ListView.builder(
             itemCount: contacts.length,

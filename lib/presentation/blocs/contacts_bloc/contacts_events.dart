@@ -1,12 +1,8 @@
-import '../../../../data/modules/contacts/models/models/index/index.dart';
+import 'package:contacts_app/domain/modules/contacts/entities/index/index.dart';
 
 abstract class ContactsEvent {}
 
-class AddContacts extends ContactsEvent {
-  final List<Contact> contacts;
-
-  AddContacts(this.contacts);
-}
+class InitContacts extends ContactsEvent {}
 
 class AddNewContact extends ContactsEvent {
   final String firstName;
@@ -28,8 +24,14 @@ class AddNewContact extends ContactsEvent {
   });
 }
 
+class UpdateContact extends ContactsEvent {
+  final ContactEntity contact;
+
+  UpdateContact(this.contact);
+}
+
 class DeleteContact extends ContactsEvent {
-  final Contact contact;
+  final ContactEntity contact;
 
   DeleteContact(this.contact);
 }

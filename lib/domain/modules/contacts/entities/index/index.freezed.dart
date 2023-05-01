@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ContactEntity {
-  @Id(assignable: true)
   int get contactID => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
@@ -38,7 +37,7 @@ abstract class $ContactEntityCopyWith<$Res> {
       _$ContactEntityCopyWithImpl<$Res, ContactEntity>;
   @useResult
   $Res call(
-      {@Id(assignable: true) int contactID,
+      {int contactID,
       String firstName,
       String? lastName,
       String? streetAddress1,
@@ -116,7 +115,7 @@ abstract class _$$_ContactEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@Id(assignable: true) int contactID,
+      {int contactID,
       String firstName,
       String? lastName,
       String? streetAddress1,
@@ -185,10 +184,9 @@ class __$$_ContactEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-@Entity(realClass: ContactEntity)
 class _$_ContactEntity implements _ContactEntity {
   _$_ContactEntity(
-      {@Id(assignable: true) required this.contactID,
+      {required this.contactID,
       required this.firstName,
       this.lastName,
       this.streetAddress1,
@@ -198,7 +196,6 @@ class _$_ContactEntity implements _ContactEntity {
       this.zipCode});
 
   @override
-  @Id(assignable: true)
   final int contactID;
   @override
   final String firstName;
@@ -253,7 +250,7 @@ class _$_ContactEntity implements _ContactEntity {
 
 abstract class _ContactEntity implements ContactEntity {
   factory _ContactEntity(
-      {@Id(assignable: true) required final int contactID,
+      {required final int contactID,
       required final String firstName,
       final String? lastName,
       final String? streetAddress1,
@@ -263,7 +260,6 @@ abstract class _ContactEntity implements ContactEntity {
       final String? zipCode}) = _$_ContactEntity;
 
   @override
-  @Id(assignable: true)
   int get contactID;
   @override
   String get firstName;
