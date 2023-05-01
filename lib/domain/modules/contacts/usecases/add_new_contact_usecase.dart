@@ -1,3 +1,6 @@
+import 'package:dartz/dartz.dart';
+
+import '../../../core/failure.dart';
 import '../repository/contacts_repository.dart';
 
 class AddNewContactUsecase {
@@ -5,8 +8,8 @@ class AddNewContactUsecase {
 
   AddNewContactUsecase({required this.repository});
 
-  void call(AddNewContactParams params) {
-    repository.addNewContact(
+  Either<Failure, void> call(AddNewContactParams params) {
+    return repository.addNewContact(
       phoneNumber: params.phoneNumber,
       firstName: params.firstName,
       lastName: params.lastName,

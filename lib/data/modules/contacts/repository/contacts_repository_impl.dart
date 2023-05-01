@@ -1,6 +1,8 @@
 import 'package:contacts_app/data/modules/contacts/models/mappers/contact_mapper.dart';
 import 'package:contacts_app/data/modules/contacts/sources/local/contacts_object_box_data_source.dart';
+import 'package:contacts_app/domain/core/failure.dart';
 import 'package:contacts_app/domain/modules/contacts/entities/index/index.dart';
+import 'package:dartz/dartz.dart';
 
 import '../../../../domain/modules/contacts/repository/contacts_repository.dart';
 import '../sources/local/conatcts_json_data_source.dart';
@@ -12,25 +14,40 @@ class ContactsRepositoryImpl implements ContactsRepository {
   ContactsRepositoryImpl({required this.jsonDataSource, required this.objectBoxDataSource});
 
   @override
-  Future<List<ContactEntity>> getContactsFromJSON() async {
-    var contactLocalDTOs = await jsonDataSource.getContacts();
-    return contactLocalDTOs.map((el) => ContactMapper.mapLocalDTOToEntity(el)).toList();
+  Future<Either<Failure, List<ContactEntity>>> getContactsFromJSON() async {
+    try {
+      var contactLocalDTOs = await jsonDataSource.getContacts();
+      var contacts = contactLocalDTOs.map((el) => ContactMapper.mapLocalDTOToEntity(el)).toList();
+      return Right(contacts);
+    } catch (e, s) {
+      return Left(JsonParseFailure(e, s));
+    }
   }
 
   @override
-  List<ContactEntity> getAllContacts() {
-    var contactLocalDTOs = objectBoxDataSource.getAllContacts();
-    return contactLocalDTOs.map((el) => ContactMapper.mapLocalDTOToEntity(el)).toList();
+  Either<Failure, List<ContactEntity>> getAllContacts() {
+    try {
+      var contactLocalDTOs = objectBoxDataSource.getAllContacts();
+      var contacts = contactLocalDTOs.map((el) => ContactMapper.mapLocalDTOToEntity(el)).toList();
+      return Right(contacts);
+    } catch (e, s) {
+      return Left(ObjectBoxFailure(e, s));
+    }
   }
 
   @override
-  void updateContact(ContactEntity contact) {
-    var contactLocalDTO = ContactMapper.mapEntityToLocalDTO(contact);
-    objectBoxDataSource.updateContact(contactLocalDTO);
+  Either<Failure, void> updateContact(ContactEntity contact) {
+    try {
+      var contactLocalDTO = ContactMapper.mapEntityToLocalDTO(contact);
+      objectBoxDataSource.updateContact(contactLocalDTO);
+      return Right(null);
+    } catch (e, s) {
+      return Left(ObjectBoxFailure(e, s));
+    }
   }
 
   @override
-  void addNewContact({
+  Either<Failure, void> addNewContact({
     required String phoneNumber,
     required String firstName,
     String? lastName,
@@ -40,27 +57,42 @@ class ContactsRepositoryImpl implements ContactsRepository {
     String? state,
     String? zipCode,
   }) {
-    objectBoxDataSource.addNewContact(
-      phoneNumber: phoneNumber,
-      firstName: firstName,
-      lastName: lastName,
-      streetAddress1: streetAddress1,
-      streetAddress2: streetAddress2,
-      city: city,
-      state: state,
-      zipCode: zipCode,
-    );
+    try {
+      objectBoxDataSource.addNewContact(
+        phoneNumber: phoneNumber,
+        firstName: firstName,
+        lastName: lastName,
+        streetAddress1: streetAddress1,
+        streetAddress2: streetAddress2,
+        city: city,
+        state: state,
+        zipCode: zipCode,
+      );
+      return Right(null);
+    } catch (e, s) {
+      return Left(ObjectBoxFailure(e, s));
+    }
   }
 
   @override
-  void addContacts(List<ContactEntity> contacts) {
-    var contactLocalDTOs = contacts.map((el) => ContactMapper.mapEntityToLocalDTO(el)).toList();
-    objectBoxDataSource.addContacts(contactLocalDTOs);
+  Either<Failure, void> addContacts(List<ContactEntity> contacts) {
+    try {
+      var contactLocalDTOs = contacts.map((el) => ContactMapper.mapEntityToLocalDTO(el)).toList();
+      objectBoxDataSource.addContacts(contactLocalDTOs);
+      return Right(null);
+    } catch (e, s) {
+      return Left(ObjectBoxFailure(e, s));
+    }
   }
 
   @override
-  void deleteContact(ContactEntity contact) {
-    var contactLocalDTO = ContactMapper.mapEntityToLocalDTO(contact);
-    objectBoxDataSource.deleteContact(contactLocalDTO);
+  Either<Failure, void> deleteContact(ContactEntity contact) {
+    try {
+      var contactLocalDTO = ContactMapper.mapEntityToLocalDTO(contact);
+      objectBoxDataSource.deleteContact(contactLocalDTO);
+      return Right(null);
+    } catch (e, s) {
+      return Left(ObjectBoxFailure(e, s));
+    }
   }
 }

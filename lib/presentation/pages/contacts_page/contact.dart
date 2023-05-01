@@ -1,13 +1,13 @@
 import 'package:contacts_app/domain/modules/contacts/entities/index/index.dart';
-import 'package:contacts_app/presentation/base/app_colors.dart';
+import 'package:contacts_app/presentation/core/app_colors.dart';
 import 'package:contacts_app/presentation/blocs/contacts_bloc/contacts_bloc.dart';
 import 'package:contacts_app/presentation/blocs/contacts_bloc/contacts_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../base/app_routes.dart';
-import '../../base/app_texts.dart';
+import '../../core/app_routes.dart';
+import '../../core/app_texts.dart';
 import '../../cubits/contact_details_cubit.dart';
 
 class Contact extends StatelessWidget {
@@ -26,10 +26,11 @@ class Contact extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Text(contact.firstName),
-          SizedBox(width: 20),
-          Text(contact.lastName ?? '-'),
+          Icon(Icons.account_circle_sharp),
           Spacer(),
+          Text(contact.firstName),
+          Spacer(),
+          Text(contact.lastName ?? '-'),
           Spacer(),
           GestureDetector(
             onTap: () {
@@ -50,6 +51,7 @@ class Contact extends StatelessWidget {
             },
             child: Icon(Icons.delete),
           ),
+          Spacer(),
         ],
       ),
     );

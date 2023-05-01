@@ -1,13 +1,15 @@
+import 'package:contacts_app/domain/core/failure.dart';
 import 'package:contacts_app/domain/modules/contacts/entities/index/index.dart';
+import 'package:dartz/dartz.dart';
 
 abstract class ContactsRepository {
-  Future<List<ContactEntity>> getContactsFromJSON();
+  Future<Either<Failure, List<ContactEntity>>> getContactsFromJSON();
 
-  List<ContactEntity> getAllContacts();
+  Either<Failure, List<ContactEntity>> getAllContacts();
 
-  void updateContact(ContactEntity contact);
+  Either<Failure, void> updateContact(ContactEntity contact);
 
-  void addNewContact({
+  Either<Failure, void> addNewContact({
     required String phoneNumber,
     required String firstName,
     String? lastName,
@@ -18,7 +20,7 @@ abstract class ContactsRepository {
     String? zipCode,
   });
 
-  void addContacts(List<ContactEntity> contacts);
+  Either<Failure, void> addContacts(List<ContactEntity> contacts);
 
-  void deleteContact(ContactEntity contact);
+  Either<Failure, void> deleteContact(ContactEntity contact);
 }

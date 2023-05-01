@@ -1,3 +1,6 @@
+import 'package:dartz/dartz.dart';
+
+import '../../../core/failure.dart';
 import '../entities/index/index.dart';
 import '../repository/contacts_repository.dart';
 
@@ -6,8 +9,8 @@ class DeleteContactUsecase {
 
   DeleteContactUsecase({required this.repository});
 
-  void call(DeleteContactParams params) {
-    repository.deleteContact(params.contact);
+  Either<Failure, void> call(DeleteContactParams params) {
+    return repository.deleteContact(params.contact);
   }
 }
 

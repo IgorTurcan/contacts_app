@@ -1,5 +1,7 @@
 import 'package:contacts_app/domain/modules/contacts/entities/index/index.dart';
+import 'package:dartz/dartz.dart';
 
+import '../../../core/failure.dart';
 import '../repository/contacts_repository.dart';
 
 class UpdateContactUsecase {
@@ -7,8 +9,8 @@ class UpdateContactUsecase {
 
   UpdateContactUsecase({required this.repository});
 
-  void call(UpdateContactParams params) {
-    repository.updateContact(params.contact);
+  Either<Failure, void> call(UpdateContactParams params) {
+    return repository.updateContact(params.contact);
   }
 }
 
