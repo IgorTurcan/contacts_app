@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'app_routes.dart';
+import 'app_texts.dart';
 
 class AppRouter {
   static GoRouter get router {
@@ -17,12 +18,20 @@ class AppRouter {
         GoRoute(
           name: AppRoutes.contactDetails.name,
           path: AppRoutes.contactDetails.path,
-          pageBuilder: (_, __) => MaterialPage(child: ContactDetailsPage()),
+          pageBuilder: (_, __) => MaterialPage(
+            child: ContactDetailsPage(
+              title: AppTexts.contactDetails,
+            ),
+          ),
         ),
         GoRoute(
           name: AppRoutes.newContact.name,
           path: AppRoutes.newContact.path,
-          pageBuilder: (_, __) => MaterialPage(child: ContactDetailsPage()),
+          pageBuilder: (_, __) => MaterialPage(
+            child: ContactDetailsPage(
+              title: AppTexts.addNewContact,
+            ),
+          ),
         ),
       ],
     );

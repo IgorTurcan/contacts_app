@@ -23,6 +23,7 @@ dependencies:
   json_annotation: ^4.8.0
   is_first_run: ^1.0.0
   get_it: ^7.3.0
+  flutter_svg: ^2.0.5
 
 dev_dependencies:
   lints: ^2.0.1
@@ -32,8 +33,10 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+  uses-material-design: true
   assets:
     - assets/data.json
+    - assets/svg/
 
 objectbox:
   output_dir: data/core

@@ -4,6 +4,8 @@ abstract class ContactsEvent {}
 
 class InitContacts extends ContactsEvent {}
 
+class PopulateContacts extends ContactsEvent {}
+
 class AddNewContact extends ContactsEvent {
   final String firstName;
   final String? lastName;

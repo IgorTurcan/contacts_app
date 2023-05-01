@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ContactDetailsCubit extends Cubit<ContactEntity?> {
   ContactDetailsCubit() : super(null);
 
-  void changeContact(ContactEntity contact) {
+  void changeContact(ContactEntity? contact) {
     emit(contact);
   }
 }

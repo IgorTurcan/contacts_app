@@ -22,6 +22,10 @@ class ContactsBloc extends Bloc<ContactsEvent, List<ContactEntity>> {
 
   void _handleEvents() {
     on<InitContacts>((event, emit) async {
+      var contacts = _getAllContactsUsecase.call();
+      emit(contacts);
+    });
+    on<PopulateContacts>((event, emit) async {
       await _initializeContactsUsecase.call();
       var contacts = _getAllContactsUsecase.call();
       emit(contacts);
