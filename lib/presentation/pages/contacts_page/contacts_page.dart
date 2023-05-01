@@ -1,10 +1,10 @@
-import 'package:contacts_app/pages/contact_details_page/contact_details_page.dart';
-import 'package:contacts_app/pages/contact_details_page/cubit/contact_details_cubit.dart';
-import 'package:contacts_app/pages/contacts_page/bloc/contacts_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../models/generated/index.dart';
+import '../../../data/modules/contacts/models/models/index/index.dart';
+import '../../blocs/contacts_bloc/contacts_bloc.dart';
+import '../contact_details_page/contact_details_page.dart';
+import '../../cubits/contact_details_cubit.dart';
 
 class ContactsPage extends StatelessWidget {
   const ContactsPage({Key? key}) : super(key: key);
@@ -12,9 +12,7 @@ class ContactsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Contacts page'),
-      ),
+      appBar: AppBar(title: const Text('Contacts page')),
       body: BlocBuilder<ContactsBloc, List<Contact>>(
         builder: (_, contacts) {
           return ListView.builder(
@@ -30,7 +28,7 @@ class ContactsPage extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  padding: EdgeInsets.all(30),
+                  padding: const EdgeInsets.all(30),
                   child: Text('${contact.firstName}-${contact.lastName}'),
                 ),
               );

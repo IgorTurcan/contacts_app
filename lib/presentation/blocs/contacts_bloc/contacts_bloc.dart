@@ -1,6 +1,5 @@
-import 'package:contacts_app/data_sources/object_box.dart';
-import 'package:contacts_app/models/generated/index.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../data/modules/contacts/models/models/index/index.dart';
 import 'contacts_events.dart';
 
 class ContactsBloc extends Bloc<ContactsEvent, List<Contact>> {

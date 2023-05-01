@@ -1,4 +1,4 @@
-import '../../../models/generated/index.dart';
+import '../../../../data/modules/contacts/models/models/index/index.dart';
 
 abstract class ContactsEvent {}
 

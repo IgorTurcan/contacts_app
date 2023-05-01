@@ -1,16 +1,17 @@
 import 'dart:convert';
-
-import 'package:contacts_app/models/generated/index.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-class JSONLoader {
-  JSONLoader._();
+import '../../models/models/index/index.dart';
 
-  static final JSONLoader instance = JSONLoader._();
+abstract class ContactsJSONDataSource {
+  Future<List<Contact>> getContacts();
+}
 
+class ContactsJSONDataSourceImpl implements ContactsJSONDataSource {
   static const String _assetsPath = 'assets/data.json';
 
-  Future<List<Contact>> getInitialContacts() async {
+  @override
+  Future<List<Contact>> getContacts() async {
     var jsonData = await rootBundle.loadString(_assetsPath);
     return ContactsList.fromJson({'list': jsonDecode(jsonData)}).list;
   }
