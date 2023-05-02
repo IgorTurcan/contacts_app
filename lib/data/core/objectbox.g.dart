@@ -20,54 +20,34 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 
 final _entities = <ModelEntity>[
   ModelEntity(
-      id: const IdUid(1, 6960171546517005620),
+      id: const IdUid(2, 8112653325472836753),
       name: 'ContactLocalDTO',
-      lastPropertyId: const IdUid(9, 3879656536786207578),
+      lastPropertyId: const IdUid(5, 3655887801734441228),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 7702738801340470857),
-            name: 'contactID',
+            id: const IdUid(1, 815807839235128706),
+            name: 'id',
             type: 6,
             flags: 129),
         ModelProperty(
-            id: const IdUid(2, 5008227660929283138),
+            id: const IdUid(2, 4371220954946966435),
+            name: 'phoneNumber',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 7817287165433369464),
             name: 'firstName',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 5608915629935242513),
+            id: const IdUid(4, 4623592631222861661),
             name: 'lastName',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 2439936305069932487),
-            name: 'streetAddress1',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(5, 1465829822253974363),
-            name: 'streetAddress2',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(6, 3975266680517505517),
-            name: 'city',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(7, 7174731646409150389),
-            name: 'state',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(8, 5640961840068594806),
-            name: 'zipCode',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(9, 3879656536786207578),
-            name: 'phoneNumber',
+            id: const IdUid(5, 3655887801734441228),
+            name: 'addresses',
             type: 9,
             flags: 0)
       ],
@@ -95,13 +75,20 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(1, 6960171546517005620),
+      lastEntityId: const IdUid(2, 8112653325472836753),
       lastIndexId: const IdUid(0, 0),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
-      retiredEntityUids: const [],
+      retiredEntityUids: const [8546696811071002598],
       retiredIndexUids: const [],
-      retiredPropertyUids: const [],
+      retiredPropertyUids: const [
+        6654885185958138802,
+        3592246120759000123,
+        7069154785718390314,
+        6763429425194943338,
+        5936468917298024360,
+        2595318710007490632
+      ],
       retiredRelationUids: const [],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
@@ -112,69 +99,48 @@ ModelDefinition getObjectBoxModel() {
         model: _entities[0],
         toOneRelations: (ContactLocalDTO object) => [],
         toManyRelations: (ContactLocalDTO object) => {},
-        getId: (ContactLocalDTO object) => object.contactID,
+        getId: (ContactLocalDTO object) => object.id,
         setId: (ContactLocalDTO object, int id) {
-          if (object.contactID != id) {
-            throw ArgumentError('Field ContactLocalDTO.contactID is read-only '
+          if (object.id != id) {
+            throw ArgumentError('Field ContactLocalDTO.id is read-only '
                 '(final or getter-only) and it was declared to be self-assigned. '
-                'However, the currently inserted object (.contactID=${object.contactID}) '
+                'However, the currently inserted object (.id=${object.id}) '
                 "doesn't match the inserted ID (ID $id). "
                 'You must assign an ID before calling [box.put()].');
           }
         },
         objectToFB: (ContactLocalDTO object, fb.Builder fbb) {
+          final phoneNumberOffset = fbb.writeString(object.phoneNumber);
           final firstNameOffset = fbb.writeString(object.firstName);
           final lastNameOffset = object.lastName == null
               ? null
               : fbb.writeString(object.lastName!);
-          final streetAddress1Offset = object.streetAddress1 == null
+          final addressesOffset = object.addresses == null
               ? null
-              : fbb.writeString(object.streetAddress1!);
-          final streetAddress2Offset = object.streetAddress2 == null
-              ? null
-              : fbb.writeString(object.streetAddress2!);
-          final cityOffset =
-              object.city == null ? null : fbb.writeString(object.city!);
-          final stateOffset =
-              object.state == null ? null : fbb.writeString(object.state!);
-          final zipCodeOffset =
-              object.zipCode == null ? null : fbb.writeString(object.zipCode!);
-          final phoneNumberOffset = fbb.writeString(object.phoneNumber);
-          fbb.startTable(10);
-          fbb.addInt64(0, object.contactID);
-          fbb.addOffset(1, firstNameOffset);
-          fbb.addOffset(2, lastNameOffset);
-          fbb.addOffset(3, streetAddress1Offset);
-          fbb.addOffset(4, streetAddress2Offset);
-          fbb.addOffset(5, cityOffset);
-          fbb.addOffset(6, stateOffset);
-          fbb.addOffset(7, zipCodeOffset);
-          fbb.addOffset(8, phoneNumberOffset);
+              : fbb.writeString(object.addresses!);
+          fbb.startTable(6);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, phoneNumberOffset);
+          fbb.addOffset(2, firstNameOffset);
+          fbb.addOffset(3, lastNameOffset);
+          fbb.addOffset(4, addressesOffset);
           fbb.finish(fbb.endTable());
-          return object.contactID;
+          return object.id;
         },
         objectFromFB: (Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
 
           final object = ContactLocalDTO(
-              contactID:
-                  const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
+              id: const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
               phoneNumber: const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 20, ''),
-              firstName: const fb.StringReader(asciiOptimization: true)
                   .vTableGet(buffer, rootOffset, 6, ''),
+              firstName: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 8, ''),
               lastName: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 8),
-              streetAddress1: const fb.StringReader(asciiOptimization: true)
                   .vTableGetNullable(buffer, rootOffset, 10),
-              streetAddress2: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 12),
-              city: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 14),
-              state: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 16),
-              zipCode: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 18));
+              addresses: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 12));
 
           return object;
         })
@@ -185,39 +151,23 @@ ModelDefinition getObjectBoxModel() {
 
 /// [ContactLocalDTO] entity fields to define ObjectBox queries.
 class ContactLocalDTO_ {
-  /// see [ContactLocalDTO.contactID]
-  static final contactID =
+  /// see [ContactLocalDTO.id]
+  static final id =
       QueryIntegerProperty<ContactLocalDTO>(_entities[0].properties[0]);
-
-  /// see [ContactLocalDTO.firstName]
-  static final firstName =
-      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[1]);
-
-  /// see [ContactLocalDTO.lastName]
-  static final lastName =
-      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[2]);
-
-  /// see [ContactLocalDTO.streetAddress1]
-  static final streetAddress1 =
-      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[3]);
-
-  /// see [ContactLocalDTO.streetAddress2]
-  static final streetAddress2 =
-      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[4]);
-
-  /// see [ContactLocalDTO.city]
-  static final city =
-      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[5]);
-
-  /// see [ContactLocalDTO.state]
-  static final state =
-      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[6]);
-
-  /// see [ContactLocalDTO.zipCode]
-  static final zipCode =
-      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[7]);
 
   /// see [ContactLocalDTO.phoneNumber]
   static final phoneNumber =
-      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[8]);
+      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[1]);
+
+  /// see [ContactLocalDTO.firstName]
+  static final firstName =
+      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[2]);
+
+  /// see [ContactLocalDTO.lastName]
+  static final lastName =
+      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[3]);
+
+  /// see [ContactLocalDTO.addresses]
+  static final addresses =
+      QueryStringProperty<ContactLocalDTO>(_entities[0].properties[4]);
 }

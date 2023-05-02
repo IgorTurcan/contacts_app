@@ -41,11 +41,32 @@ class ContactDetailsPage extends StatelessWidget {
                 InfoField(text: contact?.firstName, title: AppTexts.firstName),
                 InfoField(text: contact?.lastName, title: AppTexts.lastName),
                 InfoField(text: contact?.phoneNumber, title: AppTexts.phoneNumber),
-                InfoField(text: contact?.streetAddress1, title: AppTexts.streetAddress1),
-                InfoField(text: contact?.streetAddress2, title: AppTexts.streetAddress2),
-                InfoField(text: contact?.city, title: AppTexts.city),
-                InfoField(text: contact?.state, title: AppTexts.state),
-                InfoField(text: contact?.zipCode, title: AppTexts.zipCode),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: contact?.addresses.length,
+                  itemBuilder: (_, index) {
+                    var address = contact?.addresses[index];
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            InfoField(text: address?.streetAddress1, title: AppTexts.streetAddress1),
+                            InfoField(text: address?.streetAddress2, title: AppTexts.streetAddress2),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            InfoField(text: address?.city, title: AppTexts.city),
+                            InfoField(text: address?.state, title: AppTexts.state),
+                            InfoField(text: address?.zipCode, title: AppTexts.zipCode),
+                          ],
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ],
             );
           },

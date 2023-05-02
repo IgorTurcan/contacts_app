@@ -60,11 +60,7 @@ class ContactsBloc extends Bloc<ContactsEvent, ContactsState> {
         phoneNumber: event.phoneNumber,
         firstName: event.firstName,
         lastName: event.lastName,
-        streetAddress1: event.streetAddress1,
-        streetAddress2: event.streetAddress2,
-        city: event.city,
-        state: event.state,
-        zipCode: event.zipCode,
+        addresses: event.addresses,
       ),
     );
     var response = getAllContactsUsecase.call();

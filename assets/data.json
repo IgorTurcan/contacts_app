@@ -1,112 +1,222 @@
 [
   {
-    "contactID": 1,
+    "id": 1,
     "phoneNumber": "303-555-0198",
     "firstName": "John",
     "lastName": "Doe",
-    "streetAddress1": "123 Main St",
-    "streetAddress2": "",
-    "city": "Anytown",
-    "state": "CA",
-    "zipCode": "12345"
+    "addresses": [
+      {
+        "streetAddress1": "123 Main St",
+        "streetAddress2": "",
+        "city": "Anytown",
+        "state": "WA",
+        "zipCode": "12345"
+      },
+      {
+        "streetAddress1": "123 Main St",
+        "streetAddress2": "",
+        "city": "New York",
+        "state": "CA",
+        "zipCode": "12345"
+      }
+    ]
   },
   {
-    "contactID": 2,
-    "phoneNumber": "415-555-7684",
+    "id": 2,
+    "phoneNumber": "303-555-0112",
     "firstName": "Jane",
     "lastName": "Doe",
-    "streetAddress1": "456 Oak Ave",
-    "streetAddress2": "",
-    "city": "Othertown",
-    "state": "CA",
-    "zipCode": "54321"
+    "addresses": [
+      {
+        "streetAddress1": "456 Main St",
+        "streetAddress2": "",
+        "city": "Anytown",
+        "state": "WA",
+        "zipCode": "12345"
+      },
+      {
+        "streetAddress1": "456 Main St",
+        "streetAddress2": "",
+        "city": "New York",
+        "state": "CA",
+        "zipCode": "12345"
+      }
+    ]
   },
   {
-    "contactID": 3,
-    "phoneNumber": "678-555-2713",
+    "id": 3,
+    "phoneNumber": "303-555-0156",
     "firstName": "Bob",
     "lastName": "Smith",
-    "streetAddress1": "789 Elm St",
-    "streetAddress2": "",
-    "city": "Sometown",
-    "state": "CA",
-    "zipCode": "67890"
+    "addresses": [
+      {
+        "streetAddress1": "789 Main St",
+        "streetAddress2": "",
+        "city": "Anytown",
+        "state": "WA",
+        "zipCode": "12345"
+      },
+      {
+        "streetAddress1": "789 Main St",
+        "streetAddress2": "",
+        "city": "New York",
+        "state": "CA",
+        "zipCode": "12345"
+      }
+    ]
   },
   {
-    "contactID": 4,
-    "phoneNumber": "214-555-8465",
-    "firstName": "Alice",
+    "id": 4,
+    "phoneNumber": "303-555-0180",
+    "firstName": "Sarah",
     "lastName": "Johnson",
-    "streetAddress1": "987 Pine St",
-    "streetAddress2": "",
-    "city": "Anothertown",
-    "state": "CA",
-    "zipCode": "09876"
+    "addresses": [
+      {
+        "streetAddress1": "234 Main St",
+        "streetAddress2": "",
+        "city": "San Francisco",
+        "state": "MI",
+        "zipCode": "12345"
+      },
+      {
+        "streetAddress1": "234 Main St",
+        "streetAddress2": "",
+        "city": "Anytown",
+        "state": "CA",
+        "zipCode": "12345"
+      }
+    ]
   },
   {
-    "contactID": 5,
-    "phoneNumber": "718-555-3920",
+    "id": 5,
+    "phoneNumber": "303-555-0204",
     "firstName": "David",
-    "lastName": "Williams",
-    "streetAddress1": "654 Maple Ave",
-    "streetAddress2": "",
-    "city": "Yetanothertown",
-    "state": "CA",
-    "zipCode": "45678"
-  },
-  {
-    "contactID": 6,
-    "phoneNumber": "619-555-1384",
-    "firstName": "Mary",
     "lastName": "Brown",
-    "streetAddress1": "321 Cedar St",
-    "streetAddress2": "",
-    "city": "Lasttown",
-    "state": "CA",
-    "zipCode": "23456"
+    "addresses": [
+      {
+        "streetAddress1": "567 Main St",
+        "streetAddress2": "",
+        "city": "San Francisco",
+        "state": "MI",
+        "zipCode": "12345"
+      },
+      {
+        "streetAddress1": "567 Main St",
+        "streetAddress2": "",
+        "city": "Anytown",
+        "state": "CA",
+        "zipCode": "12345"
+      }
+    ]
   },
   {
-    "contactID": 7,
-    "phoneNumber": "312-555-7380",
-    "firstName": "Tom",
-    "lastName": "Lee",
-    "streetAddress1": "555 Oak St",
-    "streetAddress2": "",
-    "city": "Firsttown",
-    "state": "CA",
-    "zipCode": "78901"
-  },
-  {
-    "contactID": 8,
-    "phoneNumber": "202-555-6729",
-    "firstName": "Sara",
-    "lastName": "Garcia",
-    "streetAddress1": "888 Pine St",
-    "streetAddress2": "",
-    "city": "Secondtown",
-    "state": "CA",
-    "zipCode": "23456"
-  },
-  {
-    "contactID": 9,
-    "phoneNumber": "786-555-5698",
-    "firstName": "Mark",
-    "lastName": "Smith",
-    "streetAddress1": "222 Maple Ave",
-    "streetAddress2": "",
-    "city": "Thirdtown",
-    "state": "CA",
-    "zipCode": "78901"
-  },
-  {
-    "contactID": 10,
-    "phoneNumber": "503-555-2215",
+    "id": 6,
+    "phoneNumber": "303-555-0238",
     "firstName": "Emily",
-    "lastName": "Chen",
-    "streetAddress1": "333 Cedar St",
-    "streetAddress2": "",
-    "city": "Fourthtown",
-    "state": "CA",
-    "zipCode": "34567"
+    "lastName": "Garcia",
+    "addresses": [
+      {
+        "streetAddress1": "890 Main St",
+        "streetAddress2": "",
+        "city": "San Francisco",
+        "state": "MI",
+        "zipCode": "12345"
+      },
+      {
+        "streetAddress1": "890 Main St",
+        "streetAddress2": "",
+        "city": "Anytown",
+        "state": "CA",
+        "zipCode": "12345"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "phoneNumber": "303-555-0306",
+    "firstName": "Samantha",
+    "lastName": "Lee",
+    "addresses": [
+      {
+        "streetAddress1": "111 Elm St",
+        "streetAddress2": "",
+        "city": "Palo Alto",
+        "state": "MI",
+        "zipCode": "12345"
+      },
+      {
+        "streetAddress1": "222 Elm St",
+        "streetAddress2": "",
+        "city": "Anytown",
+        "state": "CA",
+        "zipCode": "12345"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "phoneNumber": "303-555-0330",
+    "firstName": "William",
+    "lastName": "Harris",
+    "addresses": [
+      {
+        "streetAddress1": "333 Oak St",
+        "streetAddress2": "",
+        "city": "Palo Alto",
+        "state": "CT",
+        "zipCode": "12345"
+      },
+      {
+        "streetAddress1": "444 Oak St",
+        "streetAddress2": "",
+        "city": "Anytown",
+        "state": "CA",
+        "zipCode": "12345"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "phoneNumber": "303-555-0364",
+    "firstName": "Lauren",
+    "lastName": "Wilson",
+    "addresses": [
+      {
+        "streetAddress1": "555 Maple St",
+        "streetAddress2": "",
+        "city": "Palo Alto",
+        "state": "CT",
+        "zipCode": "12345"
+      },
+      {
+        "streetAddress1": "666 Maple St",
+        "streetAddress2": "",
+        "city": "Moscow",
+        "state": "CT",
+        "zipCode": "12345"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "phoneNumber": "303-555-0398",
+    "firstName": "Matthew",
+    "lastName": "Allen",
+    "addresses": [
+      {
+        "streetAddress1": "777 Pine St",
+        "streetAddress2": "",
+        "city": "Anytown",
+        "state": "WA",
+        "zipCode": "12345"
+      },
+      {
+        "streetAddress1": "888 Pine St",
+        "streetAddress2": "",
+        "city": "Moscow",
+        "state": "WA",
+        "zipCode": "12345"
+      }
+    ]
   }
 ]

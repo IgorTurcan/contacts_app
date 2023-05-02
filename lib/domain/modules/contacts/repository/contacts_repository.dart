@@ -13,11 +13,7 @@ abstract class ContactsRepository {
     required String phoneNumber,
     required String firstName,
     String? lastName,
-    String? streetAddress1,
-    String? streetAddress2,
-    String? city,
-    String? state,
-    String? zipCode,
+    required List<AddressEntity> addresses,
   });
 
   Either<Failure, void> addContacts(List<ContactEntity> contacts);

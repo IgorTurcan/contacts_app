@@ -13,11 +13,7 @@ abstract class ContactsObjectBoxDataSource {
     required String phoneNumber,
     required String firstName,
     String? lastName,
-    String? streetAddress1,
-    String? streetAddress2,
-    String? city,
-    String? state,
-    String? zipCode,
+    required String addresses,
   });
 
   void addContacts(List<ContactLocalDTO> contacts);
@@ -39,7 +35,7 @@ class ContactsObjectBoxDataSourceImpl implements ContactsObjectBoxDataSource {
 
   @override
   void updateContact(ContactLocalDTO contact) {
-    bool removed = objectBox.contactBox.remove(contact.contactID);
+    bool removed = objectBox.contactBox.remove(contact.id);
     if (removed) {
       objectBox.contactBox.put(contact);
     }
@@ -50,26 +46,18 @@ class ContactsObjectBoxDataSourceImpl implements ContactsObjectBoxDataSource {
     required String phoneNumber,
     required String firstName,
     String? lastName,
-    String? streetAddress1,
-    String? streetAddress2,
-    String? city,
-    String? state,
-    String? zipCode,
+    required String addresses,
   }) {
     int newID = _randomID;
     while (objectBox.contactBox.contains(newID)) {
       newID = _randomID;
     }
     ContactLocalDTO newContact = ContactLocalDTO(
-      contactID: newID,
+      id: newID,
       phoneNumber: phoneNumber,
       firstName: firstName,
       lastName: lastName,
-      streetAddress1: streetAddress1,
-      streetAddress2: streetAddress2,
-      city: city,
-      state: state,
-      zipCode: zipCode,
+      addresses: addresses,
     );
     objectBox.contactBox.put(newContact);
   }
@@ -81,6 +69,6 @@ class ContactsObjectBoxDataSourceImpl implements ContactsObjectBoxDataSource {
 
   @override
   void deleteContact(ContactLocalDTO contact) {
-    objectBox.contactBox.remove(contact.contactID);
+    objectBox.contactBox.remove(contact.id);
   }
 }

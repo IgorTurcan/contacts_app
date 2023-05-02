@@ -3,14 +3,10 @@ part of contact_library;
 @freezed
 class ContactEntity with _$ContactEntity {
   factory ContactEntity({
-    required int contactID,
+    required int id,
     required String phoneNumber,
     required String firstName,
     String? lastName,
-    String? streetAddress1,
-    String? streetAddress2,
-    String? city,
-    String? state,
-    String? zipCode,
+    required List<AddressEntity> addresses,
   }) = _ContactEntity;
 }

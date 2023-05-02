@@ -4,69 +4,58 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:6960171546517005620",
-      "lastPropertyId": "9:3879656536786207578",
+      "id": "2:8112653325472836753",
+      "lastPropertyId": "5:3655887801734441228",
       "name": "ContactLocalDTO",
       "properties": [
         {
-          "id": "1:7702738801340470857",
-          "name": "contactID",
+          "id": "1:815807839235128706",
+          "name": "id",
           "type": 6,
           "flags": 129
         },
         {
-          "id": "2:5008227660929283138",
+          "id": "2:4371220954946966435",
+          "name": "phoneNumber",
+          "type": 9
+        },
+        {
+          "id": "3:7817287165433369464",
           "name": "firstName",
           "type": 9
         },
         {
-          "id": "3:5608915629935242513",
+          "id": "4:4623592631222861661",
           "name": "lastName",
           "type": 9
         },
         {
-          "id": "4:2439936305069932487",
-          "name": "streetAddress1",
-          "type": 9
-        },
-        {
-          "id": "5:1465829822253974363",
-          "name": "streetAddress2",
-          "type": 9
-        },
-        {
-          "id": "6:3975266680517505517",
-          "name": "city",
-          "type": 9
-        },
-        {
-          "id": "7:7174731646409150389",
-          "name": "state",
-          "type": 9
-        },
-        {
-          "id": "8:5640961840068594806",
-          "name": "zipCode",
-          "type": 9
-        },
-        {
-          "id": "9:3879656536786207578",
-          "name": "phoneNumber",
+          "id": "5:3655887801734441228",
+          "name": "addresses",
           "type": 9
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:6960171546517005620",
+  "lastEntityId": "2:8112653325472836753",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
-  "retiredEntityUids": [],
+  "retiredEntityUids": [
+    8546696811071002598
+  ],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    6654885185958138802,
+    3592246120759000123,
+    7069154785718390314,
+    6763429425194943338,
+    5936468917298024360,
+    2595318710007490632
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

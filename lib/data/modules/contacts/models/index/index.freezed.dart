@@ -21,15 +21,12 @@ ContactLocalDTO _$ContactLocalDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ContactLocalDTO {
   @Id(assignable: true)
-  int get contactID => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
-  String? get streetAddress1 => throw _privateConstructorUsedError;
-  String? get streetAddress2 => throw _privateConstructorUsedError;
-  String? get city => throw _privateConstructorUsedError;
-  String? get state => throw _privateConstructorUsedError;
-  String? get zipCode => throw _privateConstructorUsedError;
+  @AddressesConverter()
+  String? get addresses => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,15 +41,11 @@ abstract class $ContactLocalDTOCopyWith<$Res> {
       _$ContactLocalDTOCopyWithImpl<$Res, ContactLocalDTO>;
   @useResult
   $Res call(
-      {@Id(assignable: true) int contactID,
+      {@Id(assignable: true) int id,
       String phoneNumber,
       String firstName,
       String? lastName,
-      String? streetAddress1,
-      String? streetAddress2,
-      String? city,
-      String? state,
-      String? zipCode});
+      @AddressesConverter() String? addresses});
 }
 
 /// @nodoc
@@ -68,20 +61,16 @@ class _$ContactLocalDTOCopyWithImpl<$Res, $Val extends ContactLocalDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? contactID = null,
+    Object? id = null,
     Object? phoneNumber = null,
     Object? firstName = null,
     Object? lastName = freezed,
-    Object? streetAddress1 = freezed,
-    Object? streetAddress2 = freezed,
-    Object? city = freezed,
-    Object? state = freezed,
-    Object? zipCode = freezed,
+    Object? addresses = freezed,
   }) {
     return _then(_value.copyWith(
-      contactID: null == contactID
-          ? _value.contactID
-          : contactID // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
@@ -95,25 +84,9 @@ class _$ContactLocalDTOCopyWithImpl<$Res, $Val extends ContactLocalDTO>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      streetAddress1: freezed == streetAddress1
-          ? _value.streetAddress1
-          : streetAddress1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      streetAddress2: freezed == streetAddress2
-          ? _value.streetAddress2
-          : streetAddress2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zipCode: freezed == zipCode
-          ? _value.zipCode
-          : zipCode // ignore: cast_nullable_to_non_nullable
+      addresses: freezed == addresses
+          ? _value.addresses
+          : addresses // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -128,15 +101,11 @@ abstract class _$$_ContactLocalDTOCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@Id(assignable: true) int contactID,
+      {@Id(assignable: true) int id,
       String phoneNumber,
       String firstName,
       String? lastName,
-      String? streetAddress1,
-      String? streetAddress2,
-      String? city,
-      String? state,
-      String? zipCode});
+      @AddressesConverter() String? addresses});
 }
 
 /// @nodoc
@@ -150,20 +119,16 @@ class __$$_ContactLocalDTOCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? contactID = null,
+    Object? id = null,
     Object? phoneNumber = null,
     Object? firstName = null,
     Object? lastName = freezed,
-    Object? streetAddress1 = freezed,
-    Object? streetAddress2 = freezed,
-    Object? city = freezed,
-    Object? state = freezed,
-    Object? zipCode = freezed,
+    Object? addresses = freezed,
   }) {
     return _then(_$_ContactLocalDTO(
-      contactID: null == contactID
-          ? _value.contactID
-          : contactID // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
@@ -177,51 +142,32 @@ class __$$_ContactLocalDTOCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      streetAddress1: freezed == streetAddress1
-          ? _value.streetAddress1
-          : streetAddress1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      streetAddress2: freezed == streetAddress2
-          ? _value.streetAddress2
-          : streetAddress2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      state: freezed == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String?,
-      zipCode: freezed == zipCode
-          ? _value.zipCode
-          : zipCode // ignore: cast_nullable_to_non_nullable
+      addresses: freezed == addresses
+          ? _value.addresses
+          : addresses // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 @Entity(realClass: ContactLocalDTO)
 class _$_ContactLocalDTO implements _ContactLocalDTO {
   _$_ContactLocalDTO(
-      {@Id(assignable: true) required this.contactID,
+      {@Id(assignable: true) required this.id,
       required this.phoneNumber,
       required this.firstName,
       this.lastName,
-      this.streetAddress1,
-      this.streetAddress2,
-      this.city,
-      this.state,
-      this.zipCode});
+      @AddressesConverter() this.addresses});
 
   factory _$_ContactLocalDTO.fromJson(Map<String, dynamic> json) =>
       _$$_ContactLocalDTOFromJson(json);
 
   @override
   @Id(assignable: true)
-  final int contactID;
+  final int id;
   @override
   final String phoneNumber;
   @override
@@ -229,19 +175,12 @@ class _$_ContactLocalDTO implements _ContactLocalDTO {
   @override
   final String? lastName;
   @override
-  final String? streetAddress1;
-  @override
-  final String? streetAddress2;
-  @override
-  final String? city;
-  @override
-  final String? state;
-  @override
-  final String? zipCode;
+  @AddressesConverter()
+  final String? addresses;
 
   @override
   String toString() {
-    return 'ContactLocalDTO(contactID: $contactID, phoneNumber: $phoneNumber, firstName: $firstName, lastName: $lastName, streetAddress1: $streetAddress1, streetAddress2: $streetAddress2, city: $city, state: $state, zipCode: $zipCode)';
+    return 'ContactLocalDTO(id: $id, phoneNumber: $phoneNumber, firstName: $firstName, lastName: $lastName, addresses: $addresses)';
   }
 
   @override
@@ -249,36 +188,21 @@ class _$_ContactLocalDTO implements _ContactLocalDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ContactLocalDTO &&
-            (identical(other.contactID, contactID) ||
-                other.contactID == contactID) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
-            (identical(other.streetAddress1, streetAddress1) ||
-                other.streetAddress1 == streetAddress1) &&
-            (identical(other.streetAddress2, streetAddress2) ||
-                other.streetAddress2 == streetAddress2) &&
-            (identical(other.city, city) || other.city == city) &&
-            (identical(other.state, state) || other.state == state) &&
-            (identical(other.zipCode, zipCode) || other.zipCode == zipCode));
+            (identical(other.addresses, addresses) ||
+                other.addresses == addresses));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      contactID,
-      phoneNumber,
-      firstName,
-      lastName,
-      streetAddress1,
-      streetAddress2,
-      city,
-      state,
-      zipCode);
+  int get hashCode =>
+      Object.hash(runtimeType, id, phoneNumber, firstName, lastName, addresses);
 
   @JsonKey(ignore: true)
   @override
@@ -296,22 +220,18 @@ class _$_ContactLocalDTO implements _ContactLocalDTO {
 
 abstract class _ContactLocalDTO implements ContactLocalDTO {
   factory _ContactLocalDTO(
-      {@Id(assignable: true) required final int contactID,
+      {@Id(assignable: true) required final int id,
       required final String phoneNumber,
       required final String firstName,
       final String? lastName,
-      final String? streetAddress1,
-      final String? streetAddress2,
-      final String? city,
-      final String? state,
-      final String? zipCode}) = _$_ContactLocalDTO;
+      @AddressesConverter() final String? addresses}) = _$_ContactLocalDTO;
 
   factory _ContactLocalDTO.fromJson(Map<String, dynamic> json) =
       _$_ContactLocalDTO.fromJson;
 
   @override
   @Id(assignable: true)
-  int get contactID;
+  int get id;
   @override
   String get phoneNumber;
   @override
@@ -319,15 +239,8 @@ abstract class _ContactLocalDTO implements ContactLocalDTO {
   @override
   String? get lastName;
   @override
-  String? get streetAddress1;
-  @override
-  String? get streetAddress2;
-  @override
-  String? get city;
-  @override
-  String? get state;
-  @override
-  String? get zipCode;
+  @AddressesConverter()
+  String? get addresses;
   @override
   @JsonKey(ignore: true)
   _$$_ContactLocalDTOCopyWith<_$_ContactLocalDTO> get copyWith =>

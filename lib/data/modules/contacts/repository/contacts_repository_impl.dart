@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:contacts_app/data/modules/contacts/models/mappers/contact_mapper.dart';
 import 'package:contacts_app/data/modules/contacts/sources/local/contacts_object_box_data_source.dart';
 import 'package:contacts_app/domain/core/failure.dart';
@@ -51,22 +53,16 @@ class ContactsRepositoryImpl implements ContactsRepository {
     required String phoneNumber,
     required String firstName,
     String? lastName,
-    String? streetAddress1,
-    String? streetAddress2,
-    String? city,
-    String? state,
-    String? zipCode,
+    required List<AddressEntity> addresses,
   }) {
     try {
+      var addressesLocalDTOs = jsonEncode({'addresses': addresses});
+
       objectBoxDataSource.addNewContact(
         phoneNumber: phoneNumber,
         firstName: firstName,
         lastName: lastName,
-        streetAddress1: streetAddress1,
-        streetAddress2: streetAddress2,
-        city: city,
-        state: state,
-        zipCode: zipCode,
+        addresses: addressesLocalDTOs,
       );
       return Right(null);
     } catch (e, s) {

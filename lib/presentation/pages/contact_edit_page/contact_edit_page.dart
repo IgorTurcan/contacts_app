@@ -9,7 +9,7 @@ import 'edit_field.dart';
 
 typedef OnDone = void Function(
   BuildContext context, {
-  required int? contactID,
+  required int? id,
   required String phoneNumber,
   required String firstName,
   required String? lastName,
@@ -35,11 +35,11 @@ class ContactEditPage extends StatelessWidget {
     final TextEditingController phoneNumberController = TextEditingController(text: contact?.phoneNumber);
     final TextEditingController firstNameController = TextEditingController(text: contact?.firstName);
     final TextEditingController lastNameController = TextEditingController(text: contact?.lastName);
-    final TextEditingController streetAddress1Controller = TextEditingController(text: contact?.streetAddress1);
-    final TextEditingController streetAddress2Controller = TextEditingController(text: contact?.streetAddress2);
-    final TextEditingController cityController = TextEditingController(text: contact?.city);
-    final TextEditingController stateController = TextEditingController(text: contact?.state);
-    final TextEditingController zipCodeController = TextEditingController(text: contact?.zipCode);
+    final TextEditingController streetAddress1Controller = TextEditingController(text: 'contact?.streetAddress1');
+    final TextEditingController streetAddress2Controller = TextEditingController(text: 'contact?.streetAddress2');
+    final TextEditingController cityController = TextEditingController(text: 'contact?.city');
+    final TextEditingController stateController = TextEditingController(text: 'contact?.state');
+    final TextEditingController zipCodeController = TextEditingController(text: 'contact?.zipCode');
 
     return WillPopScope(
       onWillPop: () async {
@@ -76,7 +76,7 @@ class ContactEditPage extends StatelessWidget {
             var contactDetailsCubit = BlocProvider.of<ContactDetailsCubit>(context);
             onDone(
               context,
-              contactID: contactDetailsCubit.state?.contactID,
+              id: contactDetailsCubit.state?.id,
               firstName: firstNameController.text,
               lastName: lastNameController.text,
               phoneNumber: phoneNumberController.text,
