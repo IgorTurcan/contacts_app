@@ -10,16 +10,18 @@ class EditField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
-      child: TextField(
-        decoration: InputDecoration(
-          border: UnderlineInputBorder(),
-          labelText: label,
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
+      child: Expanded(
+        child: TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: label,
+          ),
+          controller: controller,
+          onChanged: (_) {
+            Logger().i('Edited $label');
+          },
         ),
-        controller: controller,
-        onChanged: (_) {
-          Logger().i('Edited $label');
-        },
       ),
     );
   }

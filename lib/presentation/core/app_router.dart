@@ -44,23 +44,18 @@ class AppRouter {
                 required String phoneNumber,
                 required String firstName,
                 required String? lastName,
-                required String? streetAddress1,
-                required String? streetAddress2,
-                required String? city,
-                required String? state,
-                required String? zipCode,
+                required List<AddressEntity> addresses,
               }) {
                 var contactsBloc = BlocProvider.of<ContactsBloc>(context);
                 contactsBloc.add(
                   UpdateContact(
                     ContactEntity(
-                        id: id!, phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, addresses: []
-                        // streetAddress1: streetAddress1,
-                        // streetAddress2: streetAddress2,
-                        // city: city,
-                        // state: state,
-                        // zipCode: zipCode,
-                        ),
+                      id: id!,
+                      phoneNumber: phoneNumber,
+                      firstName: firstName,
+                      lastName: lastName,
+                      addresses: addresses,
+                    ),
                   ),
                 );
                 Logger().i('Updated a contact');
@@ -86,21 +81,16 @@ class AppRouter {
                 required String phoneNumber,
                 required String firstName,
                 required String? lastName,
-                required String? streetAddress1,
-                required String? streetAddress2,
-                required String? city,
-                required String? state,
-                required String? zipCode,
+                required List<AddressEntity> addresses,
               }) {
                 var contactsBloc = BlocProvider.of<ContactsBloc>(context);
                 contactsBloc.add(
-                  AddNewContact(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, addresses: []
-                      // streetAddress1: streetAddress1,
-                      // streetAddress2: streetAddress2,
-                      // city: city,
-                      // state: state,
-                      // zipCode: zipCode,
-                      ),
+                  AddNewContact(
+                    phoneNumber: phoneNumber,
+                    firstName: firstName,
+                    lastName: lastName,
+                    addresses: addresses,
+                  ),
                 );
                 Logger().i('Added a new contact');
                 AppRouter.showSnackbar(context, AppTexts.done);

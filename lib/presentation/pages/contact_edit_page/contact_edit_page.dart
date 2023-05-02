@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/app_colors.dart';
+import '../contact_details_page/address_info_field.dart';
+import 'address_edit_field.dart';
 import 'edit_field.dart';
 
 typedef OnDone = void Function(
@@ -13,11 +15,7 @@ typedef OnDone = void Function(
   required String phoneNumber,
   required String firstName,
   required String? lastName,
-  required String? streetAddress1,
-  required String? streetAddress2,
-  required String? city,
-  required String? state,
-  required String? zipCode,
+  required List<AddressEntity> addresses,
 });
 typedef OnBack = void Function(BuildContext context);
 
@@ -35,11 +33,6 @@ class ContactEditPage extends StatelessWidget {
     final TextEditingController phoneNumberController = TextEditingController(text: contact?.phoneNumber);
     final TextEditingController firstNameController = TextEditingController(text: contact?.firstName);
     final TextEditingController lastNameController = TextEditingController(text: contact?.lastName);
-    final TextEditingController streetAddress1Controller = TextEditingController(text: 'contact?.streetAddress1');
-    final TextEditingController streetAddress2Controller = TextEditingController(text: 'contact?.streetAddress2');
-    final TextEditingController cityController = TextEditingController(text: 'contact?.city');
-    final TextEditingController stateController = TextEditingController(text: 'contact?.state');
-    final TextEditingController zipCodeController = TextEditingController(text: 'contact?.zipCode');
 
     return WillPopScope(
       onWillPop: () async {
@@ -58,15 +51,33 @@ class ContactEditPage extends StatelessWidget {
         body: BlocBuilder<ContactDetailsCubit, ContactEntity?>(
           builder: (_, contact) {
             return ListView(
+              padding: EdgeInsets.only(bottom: 30),
               children: [
                 EditField(controller: firstNameController, label: AppTexts.firstName),
                 EditField(controller: lastNameController, label: AppTexts.lastName),
                 EditField(controller: phoneNumberController, label: AppTexts.phoneNumber),
-                EditField(controller: streetAddress1Controller, label: AppTexts.streetAddress1),
-                EditField(controller: streetAddress2Controller, label: AppTexts.streetAddress2),
-                EditField(controller: cityController, label: AppTexts.city),
-                EditField(controller: stateController, label: AppTexts.state),
-                EditField(controller: zipCodeController, label: AppTexts.zipCode)
+                ListView.builder(
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: contact?.addresses.length,
+                  itemBuilder: (_, index) => AddressInfoField(address: contact?.addresses[index]),
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(AppTexts.addNewAddress),
+                    SizedBox(
+                      height: 40,
+                      child: FloatingActionButton(
+                        onPressed: () => _showDialog(context),
+                        child: const Icon(Icons.add),
+                        backgroundColor: AppColors.green,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             );
           },
@@ -80,18 +91,31 @@ class ContactEditPage extends StatelessWidget {
               firstName: firstNameController.text,
               lastName: lastNameController.text,
               phoneNumber: phoneNumberController.text,
-              streetAddress1: streetAddress1Controller.text,
-              streetAddress2: streetAddress2Controller.text,
-              city: cityController.text,
-              state: stateController.text,
-              zipCode: zipCodeController.text,
+              addresses: contactDetailsCubit.state?.addresses ?? [],
             );
-
           },
           child: const Icon(Icons.check),
           backgroundColor: AppColors.green,
         ),
       ),
+    );
+  }
+
+  void _showDialog(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return Container(
+          margin: EdgeInsets.symmetric(
+            vertical: 0.3 * MediaQuery.of(context).size.height,
+            horizontal: 0.05 * MediaQuery.of(context).size.width,
+          ),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(16),
+          ),
+        );
+      },
     );
   }
 }

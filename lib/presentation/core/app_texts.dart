@@ -12,4 +12,5 @@ class AppTexts {
   static const city = 'City';
   static const state = 'State';
   static const zipCode = 'Zip code';
+  static const addNewAddress = 'Add new address';
 }

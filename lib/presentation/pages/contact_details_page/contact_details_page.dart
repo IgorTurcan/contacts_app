@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:logger/logger.dart';
 
 import '../../core/app_colors.dart';
+import 'address_info_field.dart';
 import 'info_field.dart';
 
 class ContactDetailsPage extends StatelessWidget {
@@ -43,29 +44,8 @@ class ContactDetailsPage extends StatelessWidget {
                 InfoField(text: contact?.phoneNumber, title: AppTexts.phoneNumber),
                 ListView.builder(
                   shrinkWrap: true,
-                  itemCount: contact?.addresses.length,
-                  itemBuilder: (_, index) {
-                    var address = contact?.addresses[index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            InfoField(text: address?.streetAddress1, title: AppTexts.streetAddress1),
-                            InfoField(text: address?.streetAddress2, title: AppTexts.streetAddress2),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            InfoField(text: address?.city, title: AppTexts.city),
-                            InfoField(text: address?.state, title: AppTexts.state),
-                            InfoField(text: address?.zipCode, title: AppTexts.zipCode),
-                          ],
-                        ),
-                      ],
-                    );
-                  },
+                  itemCount: contact?.addresses.length ?? 0,
+                  itemBuilder: (_, index) => AddressInfoField(address: contact?.addresses[index]),
                 ),
               ],
             );
