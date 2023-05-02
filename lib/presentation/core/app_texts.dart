@@ -1,6 +1,7 @@
 class AppTexts {
   static const contacts = 'Contacts';
   static const contactDetails = 'Contact details';
+  static const editContact = 'Edit contact';
   static const addNewContact = 'Add new contact';
   static const done = 'Done';
   static const firstName = 'First name';

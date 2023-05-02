@@ -7,41 +7,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/app_colors.dart';
-import '../../core/app_router.dart';
-import 'contact_field.dart';
-
-typedef OnDone = void Function(
-  BuildContext context, {
-  required int? contactID,
-  required String phoneNumber,
-  required String firstName,
-  required String? lastName,
-  required String? streetAddress1,
-  required String? streetAddress2,
-  required String? city,
-  required String? state,
-  required String? zipCode,
-});
+import 'info_field.dart';
 
 class ContactDetailsPage extends StatelessWidget {
-  final String title;
-  final OnDone onDone;
-
-  const ContactDetailsPage({required this.title, required this.onDone});
+  const ContactDetailsPage();
 
   @override
   Widget build(BuildContext context) {
-    var contact = BlocProvider.of<ContactDetailsCubit>(context).state;
-
-    final TextEditingController phoneNumberController = TextEditingController(text: contact?.phoneNumber);
-    final TextEditingController firstNameController = TextEditingController(text: contact?.firstName);
-    final TextEditingController lastNameController = TextEditingController(text: contact?.lastName);
-    final TextEditingController streetAddress1Controller = TextEditingController(text: contact?.streetAddress1);
-    final TextEditingController streetAddress2Controller = TextEditingController(text: contact?.streetAddress2);
-    final TextEditingController cityController = TextEditingController(text: contact?.city);
-    final TextEditingController stateController = TextEditingController(text: contact?.state);
-    final TextEditingController zipCodeController = TextEditingController(text: contact?.zipCode);
-
     return WillPopScope(
       onWillPop: () async {
         context.go(AppRoutes.contacts.path);
@@ -53,43 +25,29 @@ class ContactDetailsPage extends StatelessWidget {
             onTap: () => context.go(AppRoutes.contacts.path),
             child: Icon(Icons.arrow_back_sharp),
           ),
-          title: Text(title),
+          title: Text(AppTexts.contactDetails),
           backgroundColor: AppColors.green,
         ),
         body: BlocBuilder<ContactDetailsCubit, ContactEntity?>(
           builder: (_, contact) {
             return ListView(
+              padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
               children: [
-                ContactField(controller: firstNameController, hintText: AppTexts.firstName),
-                ContactField(controller: lastNameController, hintText: AppTexts.lastName),
-                ContactField(controller: phoneNumberController, hintText: AppTexts.phoneNumber),
-                ContactField(controller: streetAddress1Controller, hintText: AppTexts.streetAddress1),
-                ContactField(controller: streetAddress2Controller, hintText: AppTexts.streetAddress2),
-                ContactField(controller: cityController, hintText: AppTexts.city),
-                ContactField(controller: stateController, hintText: AppTexts.state),
-                ContactField(controller: zipCodeController, hintText: AppTexts.zipCode)
+                InfoField(text: contact?.firstName, title: AppTexts.firstName),
+                InfoField(text: contact?.lastName, title: AppTexts.lastName),
+                InfoField(text: contact?.phoneNumber, title: AppTexts.phoneNumber),
+                InfoField(text: contact?.streetAddress1, title: AppTexts.streetAddress1),
+                InfoField(text: contact?.streetAddress2, title: AppTexts.streetAddress2),
+                InfoField(text: contact?.city, title: AppTexts.city),
+                InfoField(text: contact?.state, title: AppTexts.state),
+                InfoField(text: contact?.zipCode, title: AppTexts.zipCode),
               ],
             );
           },
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            onDone(
-              context,
-              contactID: contact?.contactID,
-              phoneNumber: phoneNumberController.text,
-              firstName: firstNameController.text,
-              lastName: lastNameController.text,
-              streetAddress1: streetAddress1Controller.text,
-              streetAddress2: streetAddress2Controller.text,
-              city: cityController.text,
-              state: stateController.text,
-              zipCode: zipCodeController.text,
-            );
-            AppRouter.showSnackbar(context, AppTexts.done);
-            context.go(AppRoutes.contacts.path);
-          },
-          child: const Icon(Icons.check),
+          onPressed: () => context.go(AppRoutes.editContact.path),
+          child: const Icon(Icons.edit),
           backgroundColor: AppColors.green,
         ),
       ),

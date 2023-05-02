@@ -1,14 +1,15 @@
 import 'package:contacts_app/domain/modules/contacts/entities/index/index.dart';
 import 'package:contacts_app/presentation/blocs/contacts_bloc/contacts_bloc.dart';
 import 'package:contacts_app/presentation/blocs/contacts_bloc/contacts_events.dart';
+import 'package:contacts_app/presentation/core/app_texts.dart';
 import 'package:contacts_app/presentation/pages/contact_details_page/contact_details_page.dart';
+import 'package:contacts_app/presentation/pages/contact_edit_page/contact_edit_page.dart';
 import 'package:contacts_app/presentation/pages/contacts_page/contacts_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'app_routes.dart';
-import 'app_texts.dart';
 
 class AppRouter {
   static GoRouter get router {
@@ -23,8 +24,16 @@ class AppRouter {
           name: AppRoutes.contactDetails.name,
           path: AppRoutes.contactDetails.path,
           pageBuilder: (_, __) => MaterialPage(
-            child: ContactDetailsPage(
-              title: AppTexts.contactDetails,
+            child: ContactDetailsPage(),
+          ),
+        ),
+        GoRoute(
+          name: AppRoutes.editContact.name,
+          path: AppRoutes.editContact.path,
+          pageBuilder: (_, __) => MaterialPage(
+            child: ContactEditPage(
+              title: AppTexts.editContact,
+              onBack: (context) => context.go(AppRoutes.contactDetails.path),
               onDone: (
                 BuildContext context, {
                 required int? contactID,
@@ -61,8 +70,9 @@ class AppRouter {
           name: AppRoutes.newContact.name,
           path: AppRoutes.newContact.path,
           pageBuilder: (_, __) => MaterialPage(
-            child: ContactDetailsPage(
+            child: ContactEditPage(
               title: AppTexts.addNewContact,
+              onBack: (context) => context.go(AppRoutes.contacts.path),
               onDone: (
                 BuildContext context, {
                 required int? contactID,
