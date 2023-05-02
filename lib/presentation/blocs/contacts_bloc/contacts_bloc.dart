@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import '../../../domain/modules/contacts/usecases/add_new_contact_usecase.dart';
 import '../../../domain/modules/contacts/usecases/delete_contact_usecase.dart';
 import '../../../domain/modules/contacts/usecases/get_all_contacts_usecase.dart';
@@ -9,13 +8,19 @@ import 'contacts_events.dart';
 import 'contacts_state.dart';
 
 class ContactsBloc extends Bloc<ContactsEvent, ContactsState> {
-  final _initializeContactsUsecase = GetIt.instance.get<InitializeContactsUsecase>();
-  final _addNewContactUsecase = GetIt.instance.get<AddNewContactUsecase>();
-  final _deleteContactUsecase = GetIt.instance.get<DeleteContactUsecase>();
-  final _getAllContactsUsecase = GetIt.instance.get<GetAllContactsUsecase>();
-  final _updateContactUsecase = GetIt.instance.get<UpdateContactUsecase>();
+  final InitializeContactsUsecase initializeContactsUsecase;
+  final AddNewContactUsecase addNewContactUsecase;
+  final DeleteContactUsecase deleteContactUsecase;
+  final GetAllContactsUsecase getAllContactsUsecase;
+  final UpdateContactUsecase updateContactUsecase;
 
-  ContactsBloc() : super(ContactsLoaded([])) {
+  ContactsBloc({
+    required this.initializeContactsUsecase,
+    required this.addNewContactUsecase,
+    required this.deleteContactUsecase,
+    required this.getAllContactsUsecase,
+    required this.updateContactUsecase,
+  }) : super(ContactsLoaded([])) {
     _handleEvents();
     add(InitContacts());
   }
@@ -30,7 +35,7 @@ class ContactsBloc extends Bloc<ContactsEvent, ContactsState> {
 
   Future<void> _handleInitContacts(event, emit) async {
     emit(Loading(state.contacts));
-    var response = _getAllContactsUsecase.call();
+    var response = getAllContactsUsecase.call();
     response.fold(
       (l) => emit(Error(state.contacts, l)),
       (r) => emit(ContactsLoaded(r)),
@@ -39,8 +44,8 @@ class ContactsBloc extends Bloc<ContactsEvent, ContactsState> {
 
   Future<void> _handlePopulateContacts(event, emit) async {
     emit(Loading(state.contacts));
-    await _initializeContactsUsecase.call();
-    var response = _getAllContactsUsecase.call();
+    await initializeContactsUsecase.call();
+    var response = getAllContactsUsecase.call();
     response.fold(
       (l) => emit(Error(state.contacts, l)),
       (r) => emit(ContactsLoaded(r)),
@@ -50,7 +55,7 @@ class ContactsBloc extends Bloc<ContactsEvent, ContactsState> {
   void _handleAddNewContact(event, emit) {
     emit(Loading(state.contacts));
 
-    _addNewContactUsecase.call(
+    addNewContactUsecase.call(
       AddNewContactParams(
         phoneNumber: event.phoneNumber,
         firstName: event.firstName,
@@ -62,7 +67,7 @@ class ContactsBloc extends Bloc<ContactsEvent, ContactsState> {
         zipCode: event.zipCode,
       ),
     );
-    var response = _getAllContactsUsecase.call();
+    var response = getAllContactsUsecase.call();
     response.fold(
       (l) => emit(Error(state.contacts, l)),
       (r) => emit(ContactsLoaded(r)),
@@ -71,8 +76,8 @@ class ContactsBloc extends Bloc<ContactsEvent, ContactsState> {
 
   void _handleUpdateContact(event, emit) {
     emit(Loading(state.contacts));
-    _updateContactUsecase.call(UpdateContactParams(contact: event.contact));
-    var response = _getAllContactsUsecase.call();
+    updateContactUsecase.call(UpdateContactParams(contact: event.contact));
+    var response = getAllContactsUsecase.call();
     response.fold(
       (l) => emit(Error(state.contacts, l)),
       (r) => emit(ContactsLoaded(r)),
@@ -81,8 +86,8 @@ class ContactsBloc extends Bloc<ContactsEvent, ContactsState> {
 
   void _handleDeleteContact(event, emit) {
     emit(Loading(state.contacts));
-    _deleteContactUsecase.call(DeleteContactParams(contact: event.contact));
-    var response = _getAllContactsUsecase.call();
+    deleteContactUsecase.call(DeleteContactParams(contact: event.contact));
+    var response = getAllContactsUsecase.call();
     response.fold(
       (l) => emit(Error(state.contacts, l)),
       (r) => emit(ContactsLoaded(r)),
