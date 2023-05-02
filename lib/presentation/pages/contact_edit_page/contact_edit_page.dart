@@ -1,13 +1,10 @@
 import 'package:contacts_app/domain/modules/contacts/entities/index/index.dart';
-import 'package:contacts_app/presentation/core/app_routes.dart';
 import 'package:contacts_app/presentation/core/app_texts.dart';
 import 'package:contacts_app/presentation/cubits/contact_details_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../core/app_colors.dart';
-import '../../core/app_router.dart';
 import 'edit_field.dart';
 
 typedef OnDone = void Function(
@@ -47,13 +44,12 @@ class ContactEditPage extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async {
         onBack(context);
-        // context.go(AppRoutes.contactDetails.path);
         return false;
       },
       child: Scaffold(
         appBar: AppBar(
           leading: GestureDetector(
-            onTap: () => onBack(context), //context.go(AppRoutes.contactDetails.path),
+            onTap: () => onBack(context),
             child: Icon(Icons.arrow_back_sharp),
           ),
           title: Text(title),
@@ -90,8 +86,7 @@ class ContactEditPage extends StatelessWidget {
               state: stateController.text,
               zipCode: zipCodeController.text,
             );
-            AppRouter.showSnackbar(context, AppTexts.done);
-            context.go(AppRoutes.contacts.path);
+
           },
           child: const Icon(Icons.check),
           backgroundColor: AppColors.green,

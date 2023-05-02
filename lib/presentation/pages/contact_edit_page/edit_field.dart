@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class EditField extends StatelessWidget {
   final String label;
@@ -16,6 +17,9 @@ class EditField extends StatelessWidget {
           labelText: label,
         ),
         controller: controller,
+        onChanged: (_) {
+          Logger().i('Edited $label');
+        },
       ),
     );
   }

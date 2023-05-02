@@ -8,6 +8,7 @@ import 'package:contacts_app/presentation/pages/contacts_page/contacts_page.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logger/logger.dart';
 
 import 'app_routes.dart';
 
@@ -33,7 +34,10 @@ class AppRouter {
           pageBuilder: (_, __) => MaterialPage(
             child: ContactEditPage(
               title: AppTexts.editContact,
-              onBack: (context) => context.go(AppRoutes.contactDetails.path),
+              onBack: (context) {
+                Logger().i('Went back to Contact details page');
+                context.go(AppRoutes.contactDetails.path);
+              },
               onDone: (
                 BuildContext context, {
                 required int? contactID,
@@ -62,6 +66,9 @@ class AppRouter {
                     ),
                   ),
                 );
+                Logger().i('Updated a contact');
+                AppRouter.showSnackbar(context, AppTexts.done);
+                context.go(AppRoutes.contactDetails.path);
               },
             ),
           ),
@@ -72,7 +79,10 @@ class AppRouter {
           pageBuilder: (_, __) => MaterialPage(
             child: ContactEditPage(
               title: AppTexts.addNewContact,
-              onBack: (context) => context.go(AppRoutes.contacts.path),
+              onBack: (context) {
+                Logger().i('Went back to Contacts page');
+                context.go(AppRoutes.contacts.path);
+              },
               onDone: (
                 BuildContext context, {
                 required int? contactID,
@@ -98,6 +108,9 @@ class AppRouter {
                     zipCode: zipCode,
                   ),
                 );
+                Logger().i('Added a new contact');
+                AppRouter.showSnackbar(context, AppTexts.done);
+                context.go(AppRoutes.contacts.path);
               },
             ),
           ),

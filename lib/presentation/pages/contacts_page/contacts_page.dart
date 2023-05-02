@@ -3,6 +3,7 @@ import 'package:contacts_app/presentation/core/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logger/logger.dart';
 
 import '../../blocs/contacts_bloc/contacts_state.dart';
 import '../../core/app_texts.dart';
@@ -48,6 +49,7 @@ class ContactsPage extends StatelessWidget {
         onPressed: () {
           BlocProvider.of<ContactDetailsCubit>(context).changeContact(null);
           context.go(AppRoutes.newContact.path);
+          Logger().i('Pressed add new contact');
         },
         child: const Icon(Icons.add),
         backgroundColor: AppColors.green,
