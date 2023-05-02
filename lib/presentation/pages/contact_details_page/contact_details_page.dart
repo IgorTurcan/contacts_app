@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/app_colors.dart';
 import '../../core/app_router.dart';
 import 'contact_field.dart';
 
@@ -53,6 +54,7 @@ class ContactDetailsPage extends StatelessWidget {
             child: Icon(Icons.arrow_back_sharp),
           ),
           title: Text(title),
+          backgroundColor: AppColors.green,
         ),
         body: BlocBuilder<ContactDetailsCubit, ContactEntity?>(
           builder: (_, contact) {
@@ -88,6 +90,7 @@ class ContactDetailsPage extends StatelessWidget {
             context.go(AppRoutes.contacts.path);
           },
           child: const Icon(Icons.check),
+          backgroundColor: AppColors.green,
         ),
       ),
     );

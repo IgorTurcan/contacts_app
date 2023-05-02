@@ -19,7 +19,6 @@ class Contact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -28,27 +27,25 @@ class Contact extends StatelessWidget {
       child: Row(
         children: [
           Icon(Icons.account_circle_sharp),
-          Spacer(),
-          Text(contact.firstName),
-          Spacer(),
-          Text(contact.lastName ?? '-'),
+          SizedBox(width: 20),
+          Text('${contact.firstName} ${contact.lastName}'),
           Spacer(),
           GestureDetector(
             onTap: () {
               BlocProvider.of<ContactDetailsCubit>(context).changeContact(contact);
               context.go(AppRoutes.contactDetails.path);
             },
-            child: Icon(Icons.edit),
+            child: Icon(Icons.edit, color: AppColors.darkGreen),
           ),
-          Spacer(),
+          SizedBox(width: 40),
           GestureDetector(
             onTap: () {
               BlocProvider.of<ContactsBloc>(context).add(DeleteContact(contact));
               AppRouter.showSnackbar(context, AppTexts.done);
             },
-            child: Icon(Icons.delete),
+            child: Icon(Icons.delete, color: AppColors.darkRed),
           ),
-          Spacer(),
+          SizedBox(width: 30),
         ],
       ),
     );

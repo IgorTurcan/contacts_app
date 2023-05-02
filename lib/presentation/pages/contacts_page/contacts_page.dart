@@ -19,6 +19,7 @@ class ContactsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(AppTexts.contacts),
         leading: Container(),
+        backgroundColor: AppColors.green,
       ),
       body: Container(
         color: AppColors.lightGrey,
@@ -26,15 +27,17 @@ class ContactsPage extends StatelessWidget {
           builder: (_, state) {
             return Stack(
               children: [
-                ListView.builder(
+                ListView.separated(
+                  padding: EdgeInsets.all(20),
+                  shrinkWrap: true,
                   itemCount: state.contacts.length,
+                  separatorBuilder: (_, __) => SizedBox(height: 20),
                   itemBuilder: (_, index) => Contact(contact: state.contacts[index]),
                 ),
                 if (state is Loading) ...[
                   Center(
-                      child: CircularProgressIndicator(
-                    strokeWidth: 5,
-                  )),
+                    child: CircularProgressIndicator(strokeWidth: 5),
+                  ),
                 ],
               ],
             );
@@ -47,6 +50,7 @@ class ContactsPage extends StatelessWidget {
           context.go(AppRoutes.newContact.path);
         },
         child: const Icon(Icons.add),
+        backgroundColor: AppColors.green,
       ),
     );
   }
