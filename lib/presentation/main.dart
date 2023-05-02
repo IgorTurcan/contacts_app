@@ -31,11 +31,7 @@ class MyApp extends StatelessWidget {
             BlocListener<ContactsBloc, ContactsState>(
               listener: (_, state) {
                 if (state is Error) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('${state.failure}'),
-                    ),
-                  );
+                  AppRouter.showSnackbar(context, '${state.failure}');
                 }
               },
             );

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/app_router.dart';
 import 'contact_field.dart';
 
 typedef OnDone = void Function(
@@ -83,11 +84,7 @@ class ContactDetailsPage extends StatelessWidget {
               state: stateController.text,
               zipCode: zipCodeController.text,
             );
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(AppTexts.done),
-              ),
-            );
+            AppRouter.showSnackbar(context, AppTexts.done);
             context.go(AppRoutes.contacts.path);
           },
           child: const Icon(Icons.check),

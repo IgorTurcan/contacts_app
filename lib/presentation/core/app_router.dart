@@ -96,4 +96,12 @@ class AppRouter {
     );
     return router;
   }
+
+  static void showSnackbar(BuildContext context, String message) {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    scaffoldMessenger.clearSnackBars();
+    scaffoldMessenger.showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
 }

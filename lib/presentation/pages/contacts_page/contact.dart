@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/app_router.dart';
 import '../../core/app_routes.dart';
 import '../../core/app_texts.dart';
 import '../../cubits/contact_details_cubit.dart';
@@ -43,11 +44,7 @@ class Contact extends StatelessWidget {
           GestureDetector(
             onTap: () {
               BlocProvider.of<ContactsBloc>(context).add(DeleteContact(contact));
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(AppTexts.done),
-                ),
-              );
+              AppRouter.showSnackbar(context, AppTexts.done);
             },
             child: Icon(Icons.delete),
           ),
