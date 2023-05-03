@@ -44,6 +44,7 @@ class ContactDetailsPage extends StatelessWidget {
                 InfoField(text: contact?.phoneNumber, title: AppTexts.phoneNumber),
                 ListView.builder(
                   shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   itemCount: contact?.addresses.length ?? 0,
                   itemBuilder: (_, index) => AddressInfoField(address: contact?.addresses[index]),
                 ),

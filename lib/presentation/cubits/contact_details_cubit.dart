@@ -7,9 +7,4 @@ class ContactDetailsCubit extends Cubit<ContactEntity?> {
   void changeContact(ContactEntity? contact) {
     emit(contact);
   }
-
-  void addAddress(AddressEntity address) {
-    List<AddressEntity> newAddresses = [...state?.addresses ?? [], address];
-    emit(state?.copyWith(addresses: newAddresses));
-  }
 }

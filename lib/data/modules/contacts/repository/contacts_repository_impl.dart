@@ -7,6 +7,7 @@ import 'package:contacts_app/domain/modules/contacts/entities/index/index.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../domain/modules/contacts/repository/contacts_repository.dart';
+import '../models/mappers/address_mapper.dart';
 import '../sources/local/conatcts_json_data_source.dart';
 
 class ContactsRepositoryImpl implements ContactsRepository {
@@ -56,13 +57,14 @@ class ContactsRepositoryImpl implements ContactsRepository {
     required List<AddressEntity> addresses,
   }) {
     try {
-      var addressesLocalDTOs = jsonEncode({'addresses': addresses});
+      var addressesLocalDTOs = addresses.map(AddressMapper.mapEntityToLocalDTO).toList();
+      var addressesSerialized = jsonEncode(addressesLocalDTOs.map((el) => el.toJson()).toList());
 
       objectBoxDataSource.addNewContact(
         phoneNumber: phoneNumber,
         firstName: firstName,
         lastName: lastName,
-        addresses: addressesLocalDTOs,
+        addresses: addressesSerialized,
       );
       return Right(null);
     } catch (e, s) {

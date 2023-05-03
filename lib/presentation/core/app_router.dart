@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logger/logger.dart';
 
+import '../cubits/contact_details_cubit.dart';
 import 'app_routes.dart';
 
 class AppRouter {
@@ -47,17 +48,16 @@ class AppRouter {
                 required List<AddressEntity> addresses,
               }) {
                 var contactsBloc = BlocProvider.of<ContactsBloc>(context);
-                contactsBloc.add(
-                  UpdateContact(
-                    ContactEntity(
-                      id: id!,
-                      phoneNumber: phoneNumber,
-                      firstName: firstName,
-                      lastName: lastName,
-                      addresses: addresses,
-                    ),
-                  ),
+                var updatedContact = ContactEntity(
+                  id: id!,
+                  phoneNumber: phoneNumber,
+                  firstName: firstName,
+                  lastName: lastName,
+                  addresses: addresses,
                 );
+                contactsBloc.add(UpdateContact(updatedContact));
+                var contactDetailsCubit = BlocProvider.of<ContactDetailsCubit>(context);
+                contactDetailsCubit.changeContact(updatedContact);
                 Logger().i('Updated a contact');
                 AppRouter.showSnackbar(context, AppTexts.done);
                 context.go(AppRoutes.contactDetails.path);
